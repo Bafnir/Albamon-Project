@@ -16,36 +16,28 @@ namespace Albamon.Models
             throw new System.NotImplementedException();
         }
 
-        public int price
+        public int Precio
         {
-            get => default;
-            set
-            {
-            }
+            get;
+            set;
         }
 
         public int ID
         {
-            get => default;
-            set
-            {
-            }
+            get;
+            set;
         }
 
-        public int signature
+        public int Wallet_Signature
         {
-            get => default;
-            set
-            {
-            }
+            get;
+            set;
         }
         [Key]
         public int VentaID
         {
-            get => default;
-            set
-            {
-            }
+            get;
+            set;
         }
         public string ClienteID
         {
@@ -53,8 +45,7 @@ namespace Albamon.Models
             set;
         }
 
-        [Display(Name = "Payment Method")]
-        [Required()]
+       
         public Wallet Wallet
         {
             get;

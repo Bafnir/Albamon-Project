@@ -18,7 +18,6 @@ namespace Albamon.Models
             set;
         }
 
-        [Required,StringLength(80, ErrorMessage = "Longitud de string excedida")]
     public virtual string name { get; set; }
 
     [Required]
