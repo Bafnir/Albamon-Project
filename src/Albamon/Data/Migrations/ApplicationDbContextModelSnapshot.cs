@@ -26,8 +26,11 @@ namespace Albamon.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("TypenNFTId")
+                    b.Property<int>("TypeNFTTypeID")
                         .HasColumnType("int");
+
+                    b.Property<string>("UserWallet")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("name")
                         .IsRequired()
@@ -39,14 +42,62 @@ namespace Albamon.Data.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("TypenNFTId");
+                    b.HasIndex("TypeNFTTypeID");
+
+                    b.HasIndex("UserWallet");
 
                     b.ToTable("NFT");
                 });
 
+            modelBuilder.Entity("Albamon.Models.Purchase", b =>
+                {
+                    b.Property<int>("purchaseID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.Property<string>("UserWallet")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("purchaseID");
+
+                    b.HasIndex("UserWallet");
+
+                    b.ToTable("Purchase");
+                });
+
+            modelBuilder.Entity("Albamon.Models.PurchaseNFT", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<double>("Fee")
+                        .HasColumnType("float");
+
+                    b.Property<int?>("NFTID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("purchaseID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("NFTID");
+
+                    b.HasIndex("purchaseID");
+
+                    b.ToTable("PurchaseNFT");
+                });
+
             modelBuilder.Entity("Albamon.Models.TypeNFT", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("TypeID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -55,9 +106,23 @@ namespace Albamon.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.Property<string>("nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("TypeID");
 
                     b.ToTable("TypeNFT");
+                });
+
+            modelBuilder.Entity("Albamon.Models.User", b =>
+                {
+                    b.Property<string>("Wallet")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Wallet");
+
+                    b.ToTable("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -262,13 +327,45 @@ namespace Albamon.Data.Migrations
 
             modelBuilder.Entity("Albamon.Models.NFT", b =>
                 {
-                    b.HasOne("Albamon.Models.TypeNFT", "TypenNFT")
+                    b.HasOne("Albamon.Models.TypeNFT", "TypeNFT")
                         .WithMany("NFTS")
-                        .HasForeignKey("TypenNFTId")
+                        .HasForeignKey("TypeNFTTypeID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("TypenNFT");
+                    b.HasOne("Albamon.Models.User", null)
+                        .WithMany("NFTS")
+                        .HasForeignKey("UserWallet");
+
+                    b.Navigation("TypeNFT");
+                });
+
+            modelBuilder.Entity("Albamon.Models.Purchase", b =>
+                {
+                    b.HasOne("Albamon.Models.User", "User")
+                        .WithMany("Purchases")
+                        .HasForeignKey("UserWallet")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Albamon.Models.PurchaseNFT", b =>
+                {
+                    b.HasOne("Albamon.Models.NFT", "NFT")
+                        .WithMany()
+                        .HasForeignKey("NFTID");
+
+                    b.HasOne("Albamon.Models.Purchase", "Purchase")
+                        .WithMany("PurchaseNFT")
+                        .HasForeignKey("purchaseID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("NFT");
+
+                    b.Navigation("Purchase");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -322,9 +419,21 @@ namespace Albamon.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Albamon.Models.Purchase", b =>
+                {
+                    b.Navigation("PurchaseNFT");
+                });
+
             modelBuilder.Entity("Albamon.Models.TypeNFT", b =>
                 {
                     b.Navigation("NFTS");
+                });
+
+            modelBuilder.Entity("Albamon.Models.User", b =>
+                {
+                    b.Navigation("NFTS");
+
+                    b.Navigation("Purchases");
                 });
 #pragma warning restore 612, 618
         }

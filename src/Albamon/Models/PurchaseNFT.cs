@@ -8,9 +8,8 @@ namespace Albamon.Models
 {
     public class PurchaseNFT
     {
-
         [Key]
-        public virtual int PurchaseID { get; set; }
+        public virtual int ID { get; set; }
 
         [Required]
         public virtual NFT NFT { get; set; }
@@ -20,9 +19,5 @@ namespace Albamon.Models
 
         [Required]
         public virtual Double Fee { get; set; }
-
-
-
-
     }
 }
