@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -19,8 +19,8 @@ namespace Albamon.Models
             set;
         }
 
-        [Range(1, Double.MaxValue, ErrorMessage = "You must provide a valid quantity")]
-        public virtual int Quantity
+      
+        public virtual int Cantidad
         {
             get;
             set;
@@ -31,14 +31,14 @@ namespace Albamon.Models
             get;
             set;
         }
-        [ForeignKey("PurchaseID")]
-        public virtual Purchase Purchase
+        [ForeignKey("VentaID")]
+        public virtual Venta Venta
         {
             get;
             set;
         }
 
-        public virtual int PurchaseID
+        public virtual int VentaID
         {
             get;
             set;

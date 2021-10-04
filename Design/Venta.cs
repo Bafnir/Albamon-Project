@@ -66,6 +66,11 @@ namespace Albamon.Models
             get;
             set;
         }
+        public virtual IList<VentaItem> VentaItems
+        {
+            get;
+            set;
+        }
 
         public void Equals()
         {

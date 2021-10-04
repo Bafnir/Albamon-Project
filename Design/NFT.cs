@@ -21,5 +21,11 @@ namespace Albamon.Models
     [Required]
     public virtual TypeNFT Type { get; set; }
 
+   
+    public virtual IList<VentaItem> VentaItem
+    {
+        get;
+        set;
+    }
     }
 }
