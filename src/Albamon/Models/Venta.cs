@@ -57,6 +57,7 @@ namespace Albamon.Models
             get;
             set;
         }
+        [NotMapped]
         public virtual IList<VentaItem> VentaItems
         {
             get;

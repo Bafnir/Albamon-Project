@@ -57,6 +57,7 @@ namespace Design
             get;
             set;
         }
+        [NotMapped]
         public virtual IList<VentaItem> VentaItems
         {
             get;

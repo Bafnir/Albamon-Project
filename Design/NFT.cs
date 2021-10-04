@@ -17,12 +17,8 @@ namespace Design
             get;
             set;
         }
-
-        public virtual IList<VentaItem> VentaItem
-        {
-            get;
-            set;
-        }
+       
+     
 
         public virtual string name
         {
@@ -44,8 +40,12 @@ namespace Design
             get;
             set;
         }
-
-
+        [NotMapped]
+        public virtual IList<VentaItem> VentaItem
+        {
+            get;
+            set;
+        }
 
     }
 }

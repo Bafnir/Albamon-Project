@@ -16,13 +16,8 @@ namespace Albamon.Models
             get;
             set;
         }
-
-        public virtual IList<VentaItem> VentaItem
-        {
-            get;
-            set;
-        }
-
+       
+       
     public virtual string name
         {
             get;
@@ -42,8 +37,13 @@ namespace Albamon.Models
             get;
             set;
         }
+        [NotMapped]
 
-
+        public virtual IList<VentaItem> VentaItem
+        {
+            get;
+            set;
+        }
 
     }
 }
