@@ -28,12 +28,15 @@
   <Class Name="Albamon.Models.NFT">
     <Position X="0.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAABAAAAAAAAgAAAAAAAAAAAAAAEAAAAAQAAAAAAAAA=</HashCode>
+      <HashCode>AAABAIAAAAAAgAAAAAAAAAAAAAAEAAAAAQAAAAAAAAA=</HashCode>
       <FileName>NFT.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Type" />
     </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="VentaItem" />
+    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Albamon.Models.TypeNFT">
     <Position X="0.75" Y="4.5" Width="1.5" />
@@ -60,13 +63,14 @@
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Cliente" />
+      <Property Name="Wallet" />
     </ShowAsAssociation>
     <ShowAsCollectionAssociation>
       <Property Name="VentaItems" />
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Albamon.Models.Wallet">
-    <Position X="8.25" Y="4" Width="1.5" />
+    <Position X="8.25" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAIAAAAAAAI=</HashCode>
       <FileName>Wallet.cs</FileName>
@@ -75,12 +79,13 @@
   <Class Name="Albamon.Models.VentaItem">
     <Position X="3.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAEAABAAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAEAABAAgAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Wallet - copia.cs</FileName>
       <NewMemberFileName>Wallet.cs</NewMemberFileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Venta" />
+      <Property Name="NFT" />
     </ShowAsAssociation>
   </Class>
   <Font Name="Segoe UI" Size="9" />

@@ -13,11 +13,7 @@ namespace Albamon.Models
     {
 
         [ForeignKey("NFT")]
-        public virtual NFT NFT
-        {
-            get;
-            set;
-        }
+       
 
       
         public virtual int Cantidad
@@ -33,6 +29,11 @@ namespace Albamon.Models
         }
         [ForeignKey("VentaID")]
         public virtual Venta Venta
+        {
+            get;
+            set;
+        }
+        public virtual NFT NFT
         {
             get;
             set;
