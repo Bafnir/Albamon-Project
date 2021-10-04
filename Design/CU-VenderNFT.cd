@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Albamon.Models.Admin">
+    <Position X="10.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Admin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Albamon.Models.Cliente">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <InheritanceLine Type="Albamon.Models.Usuario" ManuallyRouted="true" FixedFromPoint="true">
+      <Path>
+        <Point X="11.25" Y="2.367" />
+        <Point X="11.25" Y="3.372" />
+        <Point X="8.25" Y="3.372" />
+        <Point X="8.25" Y="2.497" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Cliente.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Ventas" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Albamon.Models.NFT">
+    <Position X="2.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAEAgAAAAAAAAAAEAAAAAQAAAAAAAAQ=</HashCode>
+      <FileName>NFT.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Type" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Vender" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Albamon.Models.TypeNFT">
+    <Position X="2.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAoAAABAAAAAAAAABgAAAAAAAAAAA=</HashCode>
+      <FileName>TypeNFT.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="NFT" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Albamon.Models.Usuario">
+    <Position X="10.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAgAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Usuario.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Albamon.Models.Wallet" Collapsed="true">
+    <Position X="7.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAIAAAAAAAI=</HashCode>
+      <FileName>Wallet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Albamon.Models.Venta">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAQAAAAEAgAAAgBCABAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Venta.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Wallet" />
+      <Property Name="Cliente" />
+      <Property Name="NFT" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
