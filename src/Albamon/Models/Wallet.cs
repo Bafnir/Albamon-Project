@@ -11,22 +11,19 @@ namespace Albamon.Models
     public class Wallet
     {
         [Key]
-        public int Dirección
+        public virtual int Dirección
         {
             get;
             set;
             
         }
-        public int Saldo
+        public virtual int Saldo
         {
             get;
             set;
 
         }
 
-        public void Equals()
-        {
-            throw new System.NotImplementedException();
-        }
+    
     }
 }

@@ -18,8 +18,16 @@ namespace Design
         }
 
         [Required]
-    public virtual string description { get; set; }
+    public virtual string description
+        {
+            get;
+            set;
+        }
 
-    public virtual IList<NFT> Albamons { get; set; }
+        public virtual IList<NFT> Albamons
+        {
+            get;
+            set;
+        }
     }
 }

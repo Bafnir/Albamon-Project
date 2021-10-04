@@ -24,9 +24,6 @@ namespace Design
 
         }
 
-        public void Equals()
-        {
-            throw new System.NotImplementedException();
-        }
+      
     }
 }

@@ -10,7 +10,11 @@ namespace Albamon.Models
     {
 
     [Key]
-    public virtual int ID { get; set; }
+    public virtual int ID
+        {
+            get;
+            set;
+        }
 
         public virtual IList<VentaItem> VentaItem
         {
@@ -18,15 +22,27 @@ namespace Albamon.Models
             set;
         }
 
-    public virtual string name { get; set; }
+    public virtual string name
+        {
+            get;
+            set;
+        }
 
-    [Required]
-    public virtual double price { get; set; }
+        [Required]
+    public virtual double price
+        {
+            get;
+            set;
+        }
 
-    [Required]
-    public virtual TypeNFT Type { get; set; }
+        [Required]
+    public virtual TypeNFT Type
+        {
+            get;
+            set;
+        }
 
-   
-  
+
+
     }
 }

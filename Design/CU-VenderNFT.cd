@@ -50,11 +50,10 @@
   <Class Name="Design.Venta">
     <Position X="5.5" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAEAgAAAgBCAAAAQACAAEAAAAAAAABAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAEAgAAAABCAAAAQACAAEAAAAAAAABAAAAA=</HashCode>
       <FileName>Venta.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="Wallet" />
       <Property Name="Cliente" />
     </ShowAsAssociation>
     <ShowAsCollectionAssociation>
@@ -75,7 +74,7 @@
   <Class Name="Design.Wallet">
     <Position X="5.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAIAAAAAAAI=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAI=</HashCode>
       <FileName>Wallet.cs</FileName>
     </TypeIdentifier>
   </Class>

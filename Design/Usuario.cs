@@ -10,21 +10,21 @@ namespace Design
 {
     public class Usuario : IdentityUser
     {
-        public int Nombre
+        public virtual int Nombre
         {
             get;
             set;
             
         }
 
-        public int Apellidos
+        public virtual int Apellidos
         {
             get;
             set;
            
         }
 
-        public int DNI
+        public virtual int DNI
         {
             get;
             set;

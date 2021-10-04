@@ -13,40 +13,40 @@ namespace Albamon.Models
     {
         public Venta()
         {
-            throw new System.NotImplementedException();
+            VentaItems = new List<VentaItem>();
         }
 
-        public int Precio
+        public virtual int Precio
         {
             get;
             set;
         }
 
-        public int ID
+        public virtual int ID
         {
             get;
             set;
         }
 
-        public int Wallet_Signature
+        public virtual int Wallet_Signature
         {
             get;
             set;
         }
         [Key]
-        public int VentaID
+        public virtual int VentaID
         {
             get;
             set;
         }
-        public string ClienteID
+        public virtual string ClienteID
         {
             get;
             set;
         }
 
        
-        public Wallet Wallet
+        public virtual Wallet Wallet
         {
             get;
             set;
@@ -63,10 +63,7 @@ namespace Albamon.Models
             set;
         }
 
-        public void Equals()
-        {
-            throw new System.NotImplementedException();
-        }
+      
     }
 
 }
