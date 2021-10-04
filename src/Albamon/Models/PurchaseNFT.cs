@@ -16,7 +16,7 @@ namespace Albamon.Models
         public virtual NFT NFT { get; set; }
 
         [Required]
-        public virtual Double Price { get; set; } 
+        public virtual Purchase Purchase { get; set; } 
 
         [Required]
         public virtual Double Fee { get; set; }

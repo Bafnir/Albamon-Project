@@ -19,7 +19,7 @@ namespace Albamon.Models
     public virtual double price { get; set; }
 
     [Required]
-    public virtual TypeNFT TypenNFT { get; set; }
+    public virtual TypeNFT TypeNFT { get; set; }
 
     }
 }

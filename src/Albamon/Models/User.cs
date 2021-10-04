@@ -13,6 +13,7 @@ namespace Albamon.Models
 
     public virtual IList<Purchase> Purchases { get; set; }
 
-    public virtual IList<NFT> NFTSowned { get; set; }
+    public virtual IList<NFT> NFTS { get; set; }
+
     }
 }

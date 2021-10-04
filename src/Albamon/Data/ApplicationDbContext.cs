@@ -11,6 +11,9 @@ namespace Albamon.Data
     {
         public DbSet<NFT> NFT { get; set; }
         public DbSet<TypeNFT> TypeNFT { get; set; }
+        public DbSet<PurchaseNFT> PurchaseNFT { get; set; }
+        public DbSet<Purchase> Purchase { get; set; }
+        public DbSet<User> User { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
