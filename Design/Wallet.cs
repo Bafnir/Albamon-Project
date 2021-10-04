@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 
-namespace Albamon.Models
+namespace Design
 {
     public class Wallet
     {

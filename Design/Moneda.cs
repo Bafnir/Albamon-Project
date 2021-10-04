@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Design
 {
-    class Moneda
+    public class Moneda
     {
         public virtual int TokenId
         {
