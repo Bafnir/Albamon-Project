@@ -13,7 +13,6 @@ namespace Albamon.Data
         public DbSet<NFT> NFT { get; set; }
         public DbSet<TypeNFT> TypeNFT { get; set; }
         public DbSet<Cliente> Cliente { get; set; }
-        public DbSet<NFT> NFT { get; set; }
         public DbSet<Wallet> Wallet { get; set; }
         public DbSet<Venta> Venta { get; set; }
         public DbSet<VentaItem> VentaItem { get; set; }

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 
-namespace Design
+namespace Albamon.Models
 {
     public class Venta
 

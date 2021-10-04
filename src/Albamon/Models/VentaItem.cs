@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 
 
-namespace Design
+namespace Albamon.Models
 {
     public class VentaItem
     {

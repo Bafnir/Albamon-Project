@@ -12,14 +12,21 @@ namespace Albamon.Models
     [Key]
     public virtual int ID { get; set; }
 
-    [Required,StringLength(80, ErrorMessage = "Longitud de string excedida")]
+        public virtual IList<VentaItem> VentaItem
+        {
+            get;
+            set;
+        }
+
     public virtual string name { get; set; }
 
     [Required]
     public virtual double price { get; set; }
 
     [Required]
-    public virtual TypeNFT TypenNFT { get; set; }
+    public virtual TypeNFT Type { get; set; }
 
+   
+  
     }
 }
