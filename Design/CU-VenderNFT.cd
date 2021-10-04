@@ -1,22 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Albamon.Models.Admin">
-    <Position X="11.25" Y="3.5" Width="1.5" />
+  <Class Name="Design.Admin">
+    <Position X="10" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Admin.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Albamon.Models.Cliente">
-    <Position X="9" Y="1.5" Width="1.5" />
-    <InheritanceLine Type="Albamon.Models.Usuario" ManuallyRouted="true" FixedFromPoint="true">
-      <Path>
-        <Point X="12" Y="2.367" />
-        <Point X="12" Y="3.372" />
-        <Point X="9.75" Y="3.372" />
-        <Point X="9.75" Y="2.497" />
-      </Path>
-    </InheritanceLine>
+  <Class Name="Design.Cliente">
+    <Position X="8.25" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Cliente.cs</FileName>
@@ -25,8 +17,8 @@
       <Property Name="Ventas" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="Albamon.Models.NFT">
-    <Position X="0.75" Y="1.75" Width="1.5" />
+  <Class Name="Design.NFT">
+    <Position X="0.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAABAIAAAAAAgAAAAAAAAAAAAAAEAAAAAQAAAAAAAAA=</HashCode>
       <FileName>NFT.cs</FileName>
@@ -38,8 +30,8 @@
       <Property Name="VentaItem" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="Albamon.Models.TypeNFT">
-    <Position X="0.75" Y="4.5" Width="1.5" />
+  <Class Name="Design.TypeNFT">
+    <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAIAAABAAAAAAAAABAAAAAAAAAAAA=</HashCode>
       <FileName>TypeNFT.cs</FileName>
@@ -48,45 +40,44 @@
       <Property Name="NFT" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="Albamon.Models.Usuario">
-    <Position X="11.25" Y="0.75" Width="1.5" />
+  <Class Name="Design.Usuario">
+    <Position X="9" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAEAAAAgAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Usuario.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Albamon.Models.Venta">
-    <Position X="6.25" Y="1.75" Width="1.5" />
+  <Class Name="Design.Venta">
+    <Position X="5.5" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAABAQAAAAEAgAAAgBCAAAAAACAAEAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAEAgAAAgBCAAAAQACAAEAAAAAAAABAAAAA=</HashCode>
       <FileName>Venta.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="Cliente" />
       <Property Name="Wallet" />
+      <Property Name="Cliente" />
     </ShowAsAssociation>
     <ShowAsCollectionAssociation>
       <Property Name="VentaItems" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="Albamon.Models.Wallet">
-    <Position X="8.25" Y="4.75" Width="1.5" />
+  <Class Name="Design.VentaItem">
+    <Position X="3" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAEAABAAAAAABAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>VentaItem.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="NFT" />
+      <Property Name="Venta" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Design.Wallet">
+    <Position X="5.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAIAAAAAAAI=</HashCode>
       <FileName>Wallet.cs</FileName>
     </TypeIdentifier>
-  </Class>
-  <Class Name="Albamon.Models.VentaItem">
-    <Position X="3.75" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAEAABAAgAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Wallet - copia.cs</FileName>
-      <NewMemberFileName>Wallet.cs</NewMemberFileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Venta" />
-      <Property Name="NFT" />
-    </ShowAsAssociation>
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
