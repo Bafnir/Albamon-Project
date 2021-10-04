@@ -55,6 +55,7 @@
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Cliente" />
+      <Property Name="Wallet" />
     </ShowAsAssociation>
     <ShowAsCollectionAssociation>
       <Property Name="VentaItems" />
@@ -67,8 +68,8 @@
       <FileName>VentaItem.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="NFT" />
       <Property Name="Venta" />
+      <Property Name="NFT" />
     </ShowAsAssociation>
   </Class>
   <Class Name="Design.Wallet">

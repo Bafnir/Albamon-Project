@@ -1,4 +1,5 @@
 
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,19 +10,20 @@ using System.Text;
 
 namespace Design
 {
+    [Keyless]
     public class VentaItem
     {
 
-        [ForeignKey("NFT")]
-       
 
-      
+
+        
         public virtual int Cantidad
         {
             get;
             set;
         }
 
+        
         public virtual int NFTID
         {
             get;
@@ -33,12 +35,13 @@ namespace Design
             get;
             set;
         }
+        
         public virtual NFT NFT
         {
             get;
             set;
         }
-
+       
         public virtual int VentaID
         {
             get;
