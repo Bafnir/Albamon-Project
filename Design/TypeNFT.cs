@@ -11,8 +11,13 @@ namespace Albamon.Models
 
     [Key]
     public virtual int Id { get; set; }
+        public virtual ICollection<NFT> NFT
+        {
+            get;
+            set;
+        }
 
-    [Required]
+        [Required]
     public virtual string description { get; set; }
 
     public virtual IList<NFT> Albamons { get; set; }
