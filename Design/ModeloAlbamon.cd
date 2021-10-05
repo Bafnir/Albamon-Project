@@ -1,24 +1,70 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Albamon.Models.NFT">
-    <Position X="1.25" Y="0.5" Width="1.5" />
+  <Class Name="Design.Usuario" Collapsed="true">
+    <Position X="12.5" Y="1" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAABAAAAAAAAgAAAAAAAAAAAAAAEAAAAAQAAAAAAAAA=</HashCode>
-      <FileName>NFT.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAgAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Usuario.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Type" />
-    </ShowAsAssociation>
   </Class>
-  <Class Name="Albamon.Models.TypeNFT">
-    <Position X="4.25" Y="0.75" Width="1.5" />
+  <Class Name="Design.Admin" Collapsed="true">
+    <Position X="14" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAAIAAAAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
-      <FileName>TypeNFT.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Admin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Design.Cliente">
+    <Position X="11.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Cliente.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
-      <Property Name="Albamons" />
+      <Property Name="Conversiones" />
     </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Design.Conversion">
+    <Position X="7.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAABCAAQAAACAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Conversion.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Wallet" />
+      <Property Name="Cliente" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="MonedasConvertidas" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Design.Moneda">
+    <Position X="2.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAgIAAQAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Moneda.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="MonedasConvertidas" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Design.MonedaConvertida">
+    <Position X="5.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACACAAEAQAAAAAAAAAgAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MonedaConvertida.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Conversion" />
+      <Property Name="Moneda" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Design.Wallet">
+    <Position X="11.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAIAAAAAAAI=</HashCode>
+      <FileName>Wallet.cs</FileName>
+    </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
