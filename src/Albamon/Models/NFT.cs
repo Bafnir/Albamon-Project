@@ -19,7 +19,14 @@ namespace Albamon.Models
     [Required]
     public virtual double Price { get; set; }
 
-    [Required]
+        [Required]
+        public virtual double Health { get; set; }
+
+        [Required]
+        public virtual double Attack { get; set; }
+
+
+        [Required]
     public virtual string Rarity { get; set; }
 
     [Required]

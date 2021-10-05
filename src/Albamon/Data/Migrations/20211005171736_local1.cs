@@ -2,13 +2,10 @@
 
 namespace Albamon.Data.Migrations
 {
-    public partial class test : Migration
+    public partial class local1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Prueba");
-
             migrationBuilder.AddColumn<string>(
                 name: "Discriminator",
                 table: "AspNetUsers",
@@ -65,6 +62,8 @@ namespace Albamon.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(80)", maxLength: 80, nullable: false),
                     Price = table.Column<double>(type: "float", nullable: false),
+                    Health = table.Column<double>(type: "float", nullable: false),
+                    Attack = table.Column<double>(type: "float", nullable: false),
                     Rarity = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TypeNFTTypeID = table.Column<int>(type: "int", nullable: false),
                     ApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
@@ -154,18 +153,6 @@ namespace Albamon.Data.Migrations
             migrationBuilder.DropColumn(
                 name: "Wallet",
                 table: "AspNetUsers");
-
-            migrationBuilder.CreateTable(
-                name: "Prueba",
-                columns: table => new
-                {
-                    Ola = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1")
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Prueba", x => x.Ola);
-                });
         }
     }
 }

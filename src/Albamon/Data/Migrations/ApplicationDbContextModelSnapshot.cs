@@ -29,6 +29,12 @@ namespace Albamon.Data.Migrations
                     b.Property<string>("ApplicationUserId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<double>("Attack")
+                        .HasColumnType("float");
+
+                    b.Property<double>("Health")
+                        .HasColumnType("float");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(80)
