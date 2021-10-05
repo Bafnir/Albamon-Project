@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 
 namespace Albamon.Models
 {
-    public class User
+    public class ApplicationUser : IdentityUser
     {
-    [Key]
     public virtual String Wallet { get; set; }
 
-    public virtual IList<Purchase> Purchases { get; set; }
-
     public virtual IList<NFT> NFTS { get; set; }
+
+    public virtual IList<Purchase> Purchases { get; set; }
 
     }
 }
