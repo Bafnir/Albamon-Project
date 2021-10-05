@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Design
 {
-    class MonedaConvertida
+   public class MonedaConvertida
     {
         [Key]
         public int Id

@@ -9,19 +9,33 @@ namespace Design
 {
     public class Moneda
     {
-        public virtual int TokenId
+        [Key]
+        public virtual int MonedaId
         {
             get;
             set;
         }
+        [Required]
+        [StringLength(10, ErrorMessage = "Nombre de la moneda")]
+        public virtual String Nombre
+        {
+            get;
+            set;
+        }
+       
         [Range(1, int.MaxValue, ErrorMessage = "No posee la cantidad minima de 1 para comprar")]
         public virtual int CantidadCompra
         {
             get;
             set;
         }
-        [Range(1, int.MaxValue, ErrorMessage = "Minima de cantidad de 100 para vender")]
+        [Range(100, int.MaxValue, ErrorMessage = "Minima de cantidad de 100 para vender")]
         public virtual int CantidadVenta
+        {
+            get;
+            set;
+        }
+        public virtual IList<MonedaConvertida> MonedasConvertidas
         {
             get;
             set;
