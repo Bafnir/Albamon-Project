@@ -9,6 +9,7 @@ namespace Albamon.Models
     {
 
         public virtual IList<Venta> Ventas
+        public virtual IList<Conversion> Conversiones
         {
             get;
             set;

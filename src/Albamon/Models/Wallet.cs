@@ -15,7 +15,7 @@ namespace Albamon.Models
         {
             get;
             set;
-            
+
         }
         public virtual int Saldo
         {
@@ -23,7 +23,12 @@ namespace Albamon.Models
             set;
 
         }
+        public virtual int IdTransaccion
+        {
+            get;
+            set;
+        }
 
-    
+       
     }
 }

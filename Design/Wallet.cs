@@ -11,19 +11,24 @@ namespace Design
     public class Wallet
     {
         [Key]
-        public int Dirección
-        {
-            get;
-            set;
-            
-        }
-        public int Saldo
+        public virtual int Dirección
         {
             get;
             set;
 
         }
+        public virtual int Saldo
+        {
+            get;
+            set;
 
-      
+        }
+        public virtual int IdTransaccion
+        {
+            get;
+            set;
+        }
+
+       
     }
 }
