@@ -26,13 +26,19 @@
   </Class>
   <Class Name="Design.Conversion">
     <Position X="7.75" Y="3.25" Width="1.5" />
+    <Members>
+      <Method Name="Conversion" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
       <HashCode>ABAAAAAAAAAAAAAAABCAAQAAACAAAAAABAAAAAAAAAA=</HashCode>
       <FileName>Conversion.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="Wallet" />
       <Property Name="Cliente" />
+      <Property Name="Wallet" />
     </ShowAsAssociation>
     <ShowAsCollectionAssociation>
       <Property Name="MonedasConvertidas" />
@@ -55,8 +61,8 @@
       <FileName>MonedaConvertida.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="Conversion" />
       <Property Name="Moneda" />
+      <Property Name="Conversion" />
     </ShowAsAssociation>
   </Class>
   <Class Name="Design.Wallet">
