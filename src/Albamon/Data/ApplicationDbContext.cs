@@ -17,11 +17,18 @@ namespace Albamon.Data
         public DbSet<Venta> Venta { get; set; }
         public DbSet<VentaItem> VentaItem { get; set; }
 
+        public DbSet<ApplicationUser> ApplicationUser { get; set; }
+        public DbSet<Purchase> Purchase { get; set; }
+        public DbSet<PurchaseNFT> PurchaseNFTS { get; set; }
 
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            : base(options)
+        protected override void OnModelCreating(ModelBuilder builder)
         {
+            base.OnModelCreating(builder);
+            builder.Entity<PurchaseNFT>()
+            .HasKey(pi => new { pi.NftId, pi.PurchaseId });
         }
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+            : base(options){ }       
     }
 }
  
