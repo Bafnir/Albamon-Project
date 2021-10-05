@@ -4,14 +4,16 @@ using Albamon.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Albamon.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211005153637_prueba")]
+    partial class prueba
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -19,103 +21,16 @@ namespace Albamon.Data.Migrations
                 .HasAnnotation("ProductVersion", "5.0.10")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Albamon.Models.NFT", b =>
+            modelBuilder.Entity("Albamon.Models.Prueba", b =>
                 {
-                    b.Property<int>("NftId")
+                    b.Property<int>("Ola")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("ApplicationUserId")
-                        .HasColumnType("nvarchar(450)");
+                    b.HasKey("Ola");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(80)
-                        .HasColumnType("nvarchar(80)");
-
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
-
-                    b.Property<string>("Rarity")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TypeNFTTypeID")
-                        .HasColumnType("int");
-
-                    b.HasKey("NftId");
-
-                    b.HasIndex("ApplicationUserId");
-
-                    b.HasIndex("TypeNFTTypeID");
-
-                    b.ToTable("NFT");
-                });
-
-            modelBuilder.Entity("Albamon.Models.Purchase", b =>
-                {
-                    b.Property<int>("PurchaseId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("ApplicationUserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<double>("TotalPrice")
-                        .HasColumnType("float");
-
-                    b.HasKey("PurchaseId");
-
-                    b.HasIndex("ApplicationUserId");
-
-                    b.ToTable("Purchase");
-                });
-
-            modelBuilder.Entity("Albamon.Models.PurchaseNFT", b =>
-                {
-                    b.Property<int>("NftId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PurchaseId")
-                        .HasColumnType("int");
-
-                    b.Property<double>("Fee")
-                        .HasColumnType("float");
-
-                    b.Property<int>("Pid")
-                        .HasColumnType("int");
-
-                    b.HasKey("NftId", "PurchaseId");
-
-                    b.HasIndex("PurchaseId");
-
-                    b.ToTable("PurchaseNFTS");
-                });
-
-            modelBuilder.Entity("Albamon.Models.TypeNFT", b =>
-                {
-                    b.Property<int>("TypeID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Tier")
-                        .HasColumnType("int");
-
-                    b.HasKey("TypeID");
-
-                    b.ToTable("TypeNFT");
+                    b.ToTable("Prueba");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -181,10 +96,6 @@ namespace Albamon.Data.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -236,8 +147,6 @@ namespace Albamon.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -324,61 +233,6 @@ namespace Albamon.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Albamon.Models.ApplicationUser", b =>
-                {
-                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
-
-                    b.Property<string>("Wallet")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasDiscriminator().HasValue("ApplicationUser");
-                });
-
-            modelBuilder.Entity("Albamon.Models.NFT", b =>
-                {
-                    b.HasOne("Albamon.Models.ApplicationUser", null)
-                        .WithMany("NFTS")
-                        .HasForeignKey("ApplicationUserId");
-
-                    b.HasOne("Albamon.Models.TypeNFT", "TypeNFT")
-                        .WithMany("NFTS")
-                        .HasForeignKey("TypeNFTTypeID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("TypeNFT");
-                });
-
-            modelBuilder.Entity("Albamon.Models.Purchase", b =>
-                {
-                    b.HasOne("Albamon.Models.ApplicationUser", "ApplicationUser")
-                        .WithMany("Purchases")
-                        .HasForeignKey("ApplicationUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ApplicationUser");
-                });
-
-            modelBuilder.Entity("Albamon.Models.PurchaseNFT", b =>
-                {
-                    b.HasOne("Albamon.Models.NFT", "NFT")
-                        .WithMany("PurchaseNFTS")
-                        .HasForeignKey("NftId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Albamon.Models.Purchase", "Purchase")
-                        .WithMany("PurchaseNFTS")
-                        .HasForeignKey("PurchaseId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("NFT");
-
-                    b.Navigation("Purchase");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -428,28 +282,6 @@ namespace Albamon.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Albamon.Models.NFT", b =>
-                {
-                    b.Navigation("PurchaseNFTS");
-                });
-
-            modelBuilder.Entity("Albamon.Models.Purchase", b =>
-                {
-                    b.Navigation("PurchaseNFTS");
-                });
-
-            modelBuilder.Entity("Albamon.Models.TypeNFT", b =>
-                {
-                    b.Navigation("NFTS");
-                });
-
-            modelBuilder.Entity("Albamon.Models.ApplicationUser", b =>
-                {
-                    b.Navigation("NFTS");
-
-                    b.Navigation("Purchases");
                 });
 #pragma warning restore 612, 618
         }
