@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Albamon.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211005153720_test")]
-    partial class test
+    [Migration("20211005171736_local1")]
+    partial class local1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -30,6 +30,12 @@ namespace Albamon.Data.Migrations
 
                     b.Property<string>("ApplicationUserId")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<double>("Attack")
+                        .HasColumnType("float");
+
+                    b.Property<double>("Health")
+                        .HasColumnType("float");
 
                     b.Property<string>("Name")
                         .IsRequired()
