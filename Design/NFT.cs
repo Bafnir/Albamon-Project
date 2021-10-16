@@ -19,20 +19,22 @@ namespace Albamon.Models
     [Required]
     public virtual double Price { get; set; }
 
-        [Required]
-        public virtual double Health { get; set; }
+    [Required]
+    public virtual double Health { get; set; }
 
-        [Required]
-        public virtual double Attack { get; set; }
+    [Required]
+    public virtual double Attack { get; set; }
 
 
-        [Required]
+    [Required]
     public virtual string Rarity { get; set; }
 
     [Required]
     public virtual TypeNFT TypeNFT { get; set; }
 
     public virtual IList<PurchaseNFT> PurchaseNFTS { get; set; }
+
+    public virtual IList<ApplicationUser> ApplicationUsers { get; set; }
 
     }
 }
