@@ -11,16 +11,7 @@ namespace Design
 
         [Key]
         public virtual int Id { get; set; }
-        public virtual int TypeID { get; set; }
-
         public virtual IList<NFT> NFTS { get; set; }
-
-        [Required]
-        public virtual string description
-        {
-            get;
-            set;
-        }
         [Required]
         public virtual string Description { get; set; }
         [Required]
