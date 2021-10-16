@@ -5,8 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 
-namespace Albamon.Models
-{
+namespace Design { 
     public class ApplicationUser : IdentityUser
     {
     public virtual String Wallet { get; set; }

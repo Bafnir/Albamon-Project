@@ -8,7 +8,7 @@ using System.Text;
 namespace Design
 
 {
-    public class Usuario : IdentityUser
+    public class Usuario : ApplicationUser
     {
         public virtual int Nombre
         {

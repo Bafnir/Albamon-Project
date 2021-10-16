@@ -8,7 +8,7 @@ namespace Design
     public class Cliente : Usuario
     {
 
-        public virtual IList<Venta> Ventas
+        public virtual IList<Venta> Ventas { get; set; }
         public virtual IList<Conversion> Conversiones
         {
             get;

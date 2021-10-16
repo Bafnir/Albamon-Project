@@ -21,7 +21,7 @@ namespace Albamon.Data.Migrations
 
             modelBuilder.Entity("Albamon.Models.Conversion", b =>
                 {
-                    b.Property<int>("ConversionId")
+                    b.Property<int>("ConversionId");
                     b.Property<int>("NftId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
@@ -33,7 +33,7 @@ namespace Albamon.Data.Migrations
                     b.Property<DateTime>("FechaConversion")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("WalletDirección")
+                    b.Property<int?>("WalletDirección");
                     b.Property<int?>("TypeNFTId")
                         .HasColumnType("int");
                     b.Property<string>("ApplicationUserId")
@@ -123,7 +123,7 @@ namespace Albamon.Data.Migrations
                     b.HasIndex("ApplicationUserId");
 
                     b.ToTable("Purchase");
-                });
+                }));
 
             modelBuilder.Entity("Albamon.Models.PurchaseNFT", b =>
                 {
@@ -536,7 +536,7 @@ namespace Albamon.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasDiscriminator().HasValue("Cliente");
-                });
+                }));
 
             modelBuilder.Entity("Albamon.Models.ApplicationUser", b =>
                 {
@@ -552,7 +552,7 @@ namespace Albamon.Data.Migrations
                 {
                     b.HasOne("Albamon.Models.Conversion", "Conversion")
                         .WithMany("MonedasConvertidas")
-                        .HasForeignKey("ConversionId")
+                        .HasForeignKey("ConversionId");
                     b.HasOne("Albamon.Models.TypeNFT", null)
                         .WithMany("Albamons")
                         .HasForeignKey("TypeNFTId");
@@ -587,7 +587,7 @@ namespace Albamon.Data.Migrations
 
                     b.HasOne("Albamon.Models.Venta", "Venta")
                         .WithMany()
-                        .HasForeignKey("VentaID")
+                        .HasForeignKey("VentaID");
                     b.HasOne("Albamon.Models.ApplicationUser", null)
                         .WithMany("NFTS")
                         .HasForeignKey("ApplicationUserId");
@@ -706,7 +706,7 @@ namespace Albamon.Data.Migrations
             modelBuilder.Entity("Albamon.Models.NFT", b =>
                 {
                     b.Navigation("PurchaseNFTS");
-                });
+                }));
 
             modelBuilder.Entity("Albamon.Models.Purchase", b =>
                 {

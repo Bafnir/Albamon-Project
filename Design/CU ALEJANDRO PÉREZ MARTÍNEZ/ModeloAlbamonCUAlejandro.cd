@@ -8,17 +8,22 @@
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
       <Property Name="Purchases" />
+      <Property Name="NFTS" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="Design.NFT">
+  <Class Name="Albamon.Models.NFT">
     <Position X="3" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>IAAACIAAAQAAAAEAAAAAAAQAAIAAQAAEAQAAAAAAAAA=</HashCode>
+      <HashCode>IAAACAAAAQAAAAEAAAAAAAQAAIAAQAAEAAAgAAAAAAA=</HashCode>
       <FileName>NFT.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="TypeNFT" />
     </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="ApplicationUsers" />
+      <Property Name="PurchaseNFTS" />
+    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Albamon.Models.Purchase">
     <Position X="7.5" Y="0.5" Width="1.5" />
@@ -41,6 +46,7 @@
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Purchase" />
+      <Property Name="NFT" />
     </ShowAsAssociation>
   </Class>
   <Class Name="Design.TypeNFT">
@@ -49,6 +55,9 @@
       <HashCode>AAACAAAAAAAgAAAAIAAAAAQAAACAAAAgAAAAgAAAAAA=</HashCode>
       <FileName>TypeNFT.cs</FileName>
     </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="NFTS" />
+    </ShowAsCollectionAssociation>
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

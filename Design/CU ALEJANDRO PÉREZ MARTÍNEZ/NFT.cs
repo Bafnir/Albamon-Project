@@ -1,14 +1,16 @@
-﻿using System;
+﻿using Design;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Albamon.Models
+namespace Design
 {
     public class NFT
     {
+
         [Key]
         public virtual int NftId { get; set; }
 
