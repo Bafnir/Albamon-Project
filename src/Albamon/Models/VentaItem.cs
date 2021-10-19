@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 
 
-namespace Design
+namespace Albamon.Models
 {
     [Keyless]
     public class VentaItem

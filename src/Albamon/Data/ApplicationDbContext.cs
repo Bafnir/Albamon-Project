@@ -6,6 +6,7 @@ using System.Text;
 using Albamon.Models;
 using Microsoft.AspNetCore.Identity;
 
+
 namespace Albamon.Data
 {
     public class ApplicationDbContext : IdentityDbContext<IdentityUser>
