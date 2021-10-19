@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 namespace Design
 {
-    public class Cliente : Usuario
+    public class Cliente : ApplicationUser
     {
 
         public virtual IList<Venta> Ventas { get; set; }

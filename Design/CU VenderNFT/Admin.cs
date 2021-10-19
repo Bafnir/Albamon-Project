@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 namespace Design
 {
-    public class Admin : Usuario
+    public class Admin : ApplicationUser
     {
     }
 
