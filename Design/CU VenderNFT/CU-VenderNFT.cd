@@ -4,14 +4,14 @@
     <Position X="10" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Admin.cs</FileName>
+      <FileName>CU VenderNFT\Admin.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Design.Cliente">
     <Position X="8.25" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Cliente.cs</FileName>
+      <HashCode>AAAAEAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CU VenderNFT\Cliente.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
       <Property Name="Ventas" />
@@ -20,42 +20,36 @@
   <Class Name="Design.NFT">
     <Position X="0.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAABAIAAAAAAgAAAAAAAAAAAAAAEAAAAAQAAAAAAAAA=</HashCode>
-      <FileName>NFT.cs</FileName>
+      <HashCode>IAAACAAAAQAAAAEAAAAAAAQAAIAAQAAEAAAgAAAAAAA=</HashCode>
+      <FileName>CU ALEJANDRO PÉREZ MARTÍNEZ\NFT.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Type" />
-    </ShowAsAssociation>
-    <ShowAsCollectionAssociation>
-      <Property Name="VentaItem" />
-    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Design.TypeNFT">
     <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAAIAAABAAAAAAAAABAAAAAAAAAAAA=</HashCode>
-      <FileName>TypeNFT.cs</FileName>
+      <HashCode>AAACAAAAAAAgAAAAAAAAAAQAAACAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>CU ALEJANDRO PÉREZ MARTÍNEZ\TypeNFT.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
-      <Property Name="NFT" />
+      <Property Name="NFTS" />
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Design.Usuario">
     <Position X="9" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAEAAAAgAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Usuario.cs</FileName>
+      <FileName>CU VenderNFT\Usuario.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Design.Venta">
     <Position X="5.5" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAEAgAAAABCAAAAQACAAEAAAAAAAABAAAAA=</HashCode>
-      <FileName>Venta.cs</FileName>
+      <FileName>CU VenderNFT\Venta.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="Cliente" />
       <Property Name="Wallet" />
+      <Property Name="Cliente" />
     </ShowAsAssociation>
     <ShowAsCollectionAssociation>
       <Property Name="VentaItems" />
@@ -65,7 +59,7 @@
     <Position X="3" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAEAAAEAABAAAAAABAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
-      <FileName>VentaItem.cs</FileName>
+      <FileName>CU VenderNFT\VentaItem.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Venta" />
@@ -75,8 +69,8 @@
   <Class Name="Design.Wallet">
     <Position X="5.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAI=</HashCode>
-      <FileName>Wallet.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAIAAAAAAAI=</HashCode>
+      <FileName>CU VenderNFT\Wallet.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
