@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Design
+namespace Albamon.Models
 {
     public class Moneda
     {
