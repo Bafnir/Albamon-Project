@@ -27,6 +27,15 @@
   </Class>
   <Class Name="Design.NFT">
     <Position X="0.5" Y="3.25" Width="1.5" />
+    <AssociationLine Name="ApplicationUsers" Type="Design.ApplicationUser" ManuallyRouted="true">
+      <Path>
+        <Point X="2" Y="5.046" />
+        <Point X="2.858" Y="5.046" />
+        <Point X="2.858" Y="5.515" />
+        <Point X="9.875" Y="5.515" />
+        <Point X="9.875" Y="6" />
+      </Path>
+    </AssociationLine>
     <TypeIdentifier>
       <HashCode>IAAACAAAAQAAAAEAAAAAAAQAAIAAUAAEAAAgAAAAAAA=</HashCode>
       <FileName>CU ALEJANDRO PÉREZ MARTÍNEZ\NFT.cs</FileName>
@@ -50,9 +59,9 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Design.Venta">
-    <Position X="5.5" Y="2.75" Width="1.5" />
+    <Position X="5.75" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAEAgAAAABCAAAAQACAAEAAAAAAAABAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAQEAAAAAAACAAAAAACAAEAAAAAAAAAAAAAA=</HashCode>
       <FileName>CU VenderNFT\Venta.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>

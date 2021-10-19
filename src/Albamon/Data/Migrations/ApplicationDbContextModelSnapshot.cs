@@ -119,76 +119,6 @@ namespace Albamon.Data.Migrations
                     b.ToTable("TypeNFT");
                 });
 
-            modelBuilder.Entity("Albamon.Models.Venta", b =>
-                {
-                    b.Property<int>("VentaID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("ClienteID")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ClienteId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("ID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Precio")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("WalletDirección")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Wallet_Signature")
-                        .HasColumnType("int");
-
-                    b.HasKey("VentaID");
-
-                    b.HasIndex("ClienteId");
-
-                    b.HasIndex("WalletDirección");
-
-                    b.ToTable("Ventas");
-                });
-
-            modelBuilder.Entity("Albamon.Models.VentaItem", b =>
-                {
-                    b.Property<int>("Cantidad")
-                        .HasColumnType("int");
-
-                    b.Property<int>("NFTID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("VentaID")
-                        .HasColumnType("int");
-
-                    b.HasIndex("NFTID");
-
-                    b.HasIndex("VentaID");
-
-                    b.ToTable("VentaItems");
-                });
-
-            modelBuilder.Entity("Albamon.Models.Wallet", b =>
-                {
-                    b.Property<int>("Dirección")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("IdTransaccion")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Saldo")
-                        .HasColumnType("int");
-
-                    b.HasKey("Dirección");
-
-                    b.ToTable("Wallet");
-                });
-
             modelBuilder.Entity("ApplicationUserNFT", b =>
                 {
                     b.Property<string>("ApplicationUsersId")
@@ -420,36 +350,6 @@ namespace Albamon.Data.Migrations
                     b.HasDiscriminator().HasValue("ApplicationUser");
                 });
 
-            modelBuilder.Entity("Albamon.Models.Admin", b =>
-                {
-                    b.HasBaseType("Albamon.Models.ApplicationUser");
-
-                    b.HasDiscriminator().HasValue("Admin");
-                });
-
-            modelBuilder.Entity("Albamon.Models.Cliente", b =>
-                {
-                    b.HasBaseType("Albamon.Models.ApplicationUser");
-
-                    b.HasDiscriminator().HasValue("Cliente");
-                });
-
-            modelBuilder.Entity("Albamon.Models.Usuario", b =>
-                {
-                    b.HasBaseType("Albamon.Models.ApplicationUser");
-
-                    b.Property<int>("Apellidos")
-                        .HasColumnType("int");
-
-                    b.Property<int>("DNI")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Nombre")
-                        .HasColumnType("int");
-
-                    b.HasDiscriminator().HasValue("Usuario");
-                });
-
             modelBuilder.Entity("Albamon.Models.NFT", b =>
                 {
                     b.HasOne("Albamon.Models.TypeNFT", "TypeNFT")
@@ -489,40 +389,6 @@ namespace Albamon.Data.Migrations
                     b.Navigation("NFT");
 
                     b.Navigation("Purchase");
-                });
-
-            modelBuilder.Entity("Albamon.Models.Venta", b =>
-                {
-                    b.HasOne("Albamon.Models.Cliente", "Cliente")
-                        .WithMany("Ventas")
-                        .HasForeignKey("ClienteId");
-
-                    b.HasOne("Albamon.Models.Wallet", "Wallet")
-                        .WithMany()
-                        .HasForeignKey("WalletDirección");
-
-                    b.Navigation("Cliente");
-
-                    b.Navigation("Wallet");
-                });
-
-            modelBuilder.Entity("Albamon.Models.VentaItem", b =>
-                {
-                    b.HasOne("Albamon.Models.NFT", "NFT")
-                        .WithMany()
-                        .HasForeignKey("NFTID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Albamon.Models.Venta", "Venta")
-                        .WithMany()
-                        .HasForeignKey("VentaID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("NFT");
-
-                    b.Navigation("Venta");
                 });
 
             modelBuilder.Entity("ApplicationUserNFT", b =>
@@ -609,11 +475,6 @@ namespace Albamon.Data.Migrations
             modelBuilder.Entity("Albamon.Models.ApplicationUser", b =>
                 {
                     b.Navigation("Purchases");
-                });
-
-            modelBuilder.Entity("Albamon.Models.Cliente", b =>
-                {
-                    b.Navigation("Ventas");
                 });
 #pragma warning restore 612, 618
         }
