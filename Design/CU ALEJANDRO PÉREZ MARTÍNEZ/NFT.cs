@@ -35,7 +35,11 @@ namespace Design
 
         public virtual IList<PurchaseNFT> PurchaseNFTS { get; set; }
 
+        public virtual IList<VentaItem> VentaItems { get; set; }
+
         public virtual IList<ApplicationUser> ApplicationUsers { get; set; }
+
+
 
     }
 }
