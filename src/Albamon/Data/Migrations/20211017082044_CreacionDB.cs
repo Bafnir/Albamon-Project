@@ -2,7 +2,7 @@
 
 namespace Albamon.Data.Migrations
 {
-    public partial class Creaciondb : Migration
+    public partial class CreacionDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

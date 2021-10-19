@@ -15,6 +15,9 @@ namespace Design
         public virtual double TotalPrice { get; set; }
 
         [Required]
+        public virtual DateTime BuyDate { get; set; }
+
+        [Required]
 
         public virtual ApplicationUser ApplicationUser { get; set; }
 
