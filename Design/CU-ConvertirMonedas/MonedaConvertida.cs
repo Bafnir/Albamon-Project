@@ -23,6 +23,11 @@ namespace Design
             get;
             set;
         }
+        public virtual int monedaId
+        {
+            get;
+            set;
+        }
 
         [Range(1, Double.MaxValue, ErrorMessage = "Cantidad insuficiente de monedas")]
         public virtual int Cantidad
@@ -31,11 +36,7 @@ namespace Design
             set;
         }
 
-        public virtual int monedaId
-        {
-            get;
-            set;
-        }
+       
         [ForeignKey("ConversionId")]
         public virtual Conversion Conversion
         {
