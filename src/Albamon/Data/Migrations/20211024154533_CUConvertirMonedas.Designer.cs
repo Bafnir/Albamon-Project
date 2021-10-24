@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Albamon.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211019183142_CUConvertirMoneda")]
-    partial class CUConvertirMoneda
+    [Migration("20211024154533_CUConvertirMonedas")]
+    partial class CUConvertirMonedas
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,82 @@ namespace Albamon.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.11")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("Albamon.Models.Conversion", b =>
+                {
+                    b.Property<int>("ConversionId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ClienteId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("FechaConversion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("WalletDirección")
+                        .HasColumnType("int");
+
+                    b.HasKey("ConversionId");
+
+                    b.HasIndex("ClienteId");
+
+                    b.HasIndex("WalletDirección");
+
+                    b.ToTable("Conversion");
+                });
+
+            modelBuilder.Entity("Albamon.Models.Moneda", b =>
+                {
+                    b.Property<int>("MonedaId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CantidadCompra")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CantidadVenta")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.HasKey("MonedaId");
+
+                    b.ToTable("Moneda");
+                });
+
+            modelBuilder.Entity("Albamon.Models.MonedaConvertida", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Cantidad")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ConversionId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("MonedaId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("monedaId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ConversionId");
+
+                    b.HasIndex("MonedaId");
+
+                    b.ToTable("MonedaConvertida");
+                });
 
             modelBuilder.Entity("Albamon.Models.NFT", b =>
                 {
@@ -443,6 +519,38 @@ namespace Albamon.Data.Migrations
                     b.HasDiscriminator().HasValue("Usuario");
                 });
 
+            modelBuilder.Entity("Albamon.Models.Conversion", b =>
+                {
+                    b.HasOne("Albamon.Models.Cliente", "Cliente")
+                        .WithMany()
+                        .HasForeignKey("ClienteId");
+
+                    b.HasOne("Albamon.Models.Wallet", "Wallet")
+                        .WithMany()
+                        .HasForeignKey("WalletDirección");
+
+                    b.Navigation("Cliente");
+
+                    b.Navigation("Wallet");
+                });
+
+            modelBuilder.Entity("Albamon.Models.MonedaConvertida", b =>
+                {
+                    b.HasOne("Albamon.Models.Conversion", "Conversion")
+                        .WithMany("MonedasConvertidas")
+                        .HasForeignKey("ConversionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Albamon.Models.Moneda", "Moneda")
+                        .WithMany("MonedasConvertidas")
+                        .HasForeignKey("MonedaId");
+
+                    b.Navigation("Conversion");
+
+                    b.Navigation("Moneda");
+                });
+
             modelBuilder.Entity("Albamon.Models.NFT", b =>
                 {
                     b.HasOne("Albamon.Models.TypeNFT", "TypeNFT")
@@ -582,6 +690,16 @@ namespace Albamon.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Albamon.Models.Conversion", b =>
+                {
+                    b.Navigation("MonedasConvertidas");
+                });
+
+            modelBuilder.Entity("Albamon.Models.Moneda", b =>
+                {
+                    b.Navigation("MonedasConvertidas");
                 });
 
             modelBuilder.Entity("Albamon.Models.NFT", b =>
