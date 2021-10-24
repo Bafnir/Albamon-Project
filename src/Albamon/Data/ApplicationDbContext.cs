@@ -23,6 +23,12 @@ namespace Albamon.Data
         public DbSet<Venta> Ventas { get; set; }
         public DbSet<VentaItem> VentaItems { get; set; }
         public DbSet<Wallet> Wallet { get; set; }
+        public DbSet<Moneda> Moneda { get; set; }
+        public DbSet<MonedaConvertida> MonedaConvertida { get; set; }
+        public DbSet<Conversion> Conversion { get; set; }
+
+
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
