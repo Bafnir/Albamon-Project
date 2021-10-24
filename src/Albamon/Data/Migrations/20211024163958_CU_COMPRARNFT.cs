@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Albamon.Data.Migrations
 {
-    public partial class CUCOMPRARNFT : Migration
+    public partial class CU_COMPRARNFT : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

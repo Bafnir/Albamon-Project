@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Albamon.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211019182832_CU-COMPRARNFT")]
-    partial class CUCOMPRARNFT
+    [Migration("20211024163958_CU_COMPRARNFT")]
+    partial class CU_COMPRARNFT
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
