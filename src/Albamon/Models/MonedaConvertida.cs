@@ -31,7 +31,7 @@ namespace Albamon.Models
             set;
         }
 
-        public virtual int monedaId
+        public virtual int MonedaId
         {
             get;
             set;

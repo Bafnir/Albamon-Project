@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Albamon.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211024154533_CUConvertirMonedas")]
+    [Migration("20211024171720_CUConvertirMonedas")]
     partial class CUConvertirMonedas
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
