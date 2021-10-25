@@ -1,41 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-<<<<<<< HEAD:Design/CU-COMPRAR ALBAMON.cd
-  <Class Name="Albamon.Models.NFT">
-    <Position X="6.5" Y="2.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>IAAACAAAAQAAAAEAAAAAAAQAAIAAQAAEAAAgAAAAAAA=</HashCode>
-      <FileName>NFT.cs</FileName>
-=======
   <Class Name="Design.NFT">
     <Position X="5.75" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>IAAACAAAAQAAAAEAAAAAAAQAAIAAUAAEAAAgAAAAAAA=</HashCode>
       <FileName>CU ALEJANDRO PÉREZ MARTÍNEZ\NFT.cs</FileName>
->>>>>>> master:Design/CU ALEJANDRO PÉREZ MARTÍNEZ/CU-COMPRAR NFT.cd
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="TypeNFT" />
     </ShowAsAssociation>
     <ShowAsCollectionAssociation>
-      <Property Name="ApplicationUsers" />
       <Property Name="PurchaseNFTS" />
       <Property Name="ApplicationUsers" />
     </ShowAsCollectionAssociation>
   </Class>
-<<<<<<< HEAD:Design/CU-COMPRAR ALBAMON.cd
-  <Class Name="Albamon.Models.Purchase">
-    <Position X="13" Y="2.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAABAAAAAEYAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Purchase.cs</FileName>
-=======
   <Class Name="Design.PurchaseNFT">
     <Position X="8.75" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>IAQAAAAABAAAAAAgAAACBAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>CU ALEJANDRO PÉREZ MARTÍNEZ\PurchaseNFT.cs</FileName>
->>>>>>> master:Design/CU ALEJANDRO PÉREZ MARTÍNEZ/CU-COMPRAR NFT.cd
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="NFT" />
@@ -52,10 +35,6 @@
       <Property Name="NFTS" />
     </ShowAsCollectionAssociation>
   </Class>
-<<<<<<< HEAD:Design/CU-COMPRAR ALBAMON.cd
-  <Class Name="Albamon.Models.PurchaseNFT">
-    <Position X="9.5" Y="2.25" Width="1.5" />
-=======
   <Class Name="Design.ApplicationUser">
     <Position X="11.75" Y="5" Width="1.5" />
     <AssociationLine Name="NFTS" Type="Design.NFT" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
@@ -66,7 +45,6 @@
         <Point X="7.25" Y="4" />
       </Path>
     </AssociationLine>
->>>>>>> master:Design/CU ALEJANDRO PÉREZ MARTÍNEZ/CU-COMPRAR NFT.cd
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAACCAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>CU ALEJANDRO PÉREZ MARTÍNEZ\ApplicationUser.cs</FileName>
@@ -76,13 +54,8 @@
       <Property Name="Purchases" />
     </ShowAsCollectionAssociation>
   </Class>
-<<<<<<< HEAD:Design/CU-COMPRAR ALBAMON.cd
-  <Class Name="Albamon.Models.TypeNFT">
-    <Position X="3" Y="2.25" Width="1.5" />
-=======
   <Class Name="Design.Purchase">
     <Position X="11.5" Y="2.25" Width="1.5" />
->>>>>>> master:Design/CU ALEJANDRO PÉREZ MARTÍNEZ/CU-COMPRAR NFT.cd
     <TypeIdentifier>
       <HashCode>AAAAAAAABAAAAAEYAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
       <FileName>CU ALEJANDRO PÉREZ MARTÍNEZ\Purchase.cs</FileName>
@@ -92,17 +65,6 @@
     </ShowAsAssociation>
     <ShowAsCollectionAssociation>
       <Property Name="PurchaseNFTS" />
-    </ShowAsCollectionAssociation>
-  </Class>
-  <Class Name="Albamon.Models.ApplicationUser">
-    <Position X="13" Y="5.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAACCAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ApplicationUser.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsCollectionAssociation>
-      <Property Name="Purchases" />
-      <Property Name="NFTS" />
     </ShowAsCollectionAssociation>
   </Class>
   <Font Name="Segoe UI" Size="9" />
