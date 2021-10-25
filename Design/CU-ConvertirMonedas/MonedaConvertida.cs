@@ -28,7 +28,6 @@ namespace Design
             get;
             set;
         }
-
         [Range(1, Double.MaxValue, ErrorMessage = "Cantidad insuficiente de monedas")]
         public virtual int Cantidad
         {
