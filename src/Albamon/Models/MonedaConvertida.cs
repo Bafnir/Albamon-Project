@@ -23,15 +23,15 @@ namespace Albamon.Models
             get;
             set;
         }
-
-        [Range(1, Double.MaxValue, ErrorMessage = "Cantidad insuficiente de monedas")]
-        public virtual int Cantidad
+        public virtual int MonedaId
         {
             get;
             set;
         }
 
-        public virtual int MonedaId
+
+        [Range(1, Double.MaxValue, ErrorMessage = "Cantidad insuficiente de monedas")]
+        public virtual int Cantidad
         {
             get;
             set;
