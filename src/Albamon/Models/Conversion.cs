@@ -6,44 +6,53 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Design
+namespace Albamon.Models
 {
-   public class MonedaConvertida
+    public class Conversion
     {
         [Key]
-        public int Id
+        public int ConversionId
         {
             get;
             set;
         }
 
-        [ForeignKey("MonedaId")]
-        public virtual Moneda Moneda
+
+
+        public DateTime FechaConversion
         {
             get;
             set;
         }
 
-        [Range(1, Double.MaxValue, ErrorMessage = "Cantidad insuficiente de monedas")]
-        public virtual int Cantidad
+
+        public virtual IList<MonedaConvertida> MonedasConvertidas
+        {
+            get;
+            set;
+        }
+        public Conversion()
+        {
+
+            MonedasConvertidas = new List<MonedaConvertida>();
+        }
+        [ForeignKey("ClienteId")]
+        public virtual Cliente Cliente
         {
             get;
             set;
         }
 
-        public virtual int monedaId
-        {
-            get;
-            set;
-        }
-        [ForeignKey("ConversionId")]
-        public virtual Conversion Conversion
+        
+        public string ClienteId
         {
             get;
             set;
         }
 
-        public virtual int ConversionId
+        [Display(Name = "Wallet")]
+        [Required()]
+        public Wallet Wallet
         {
             get;
             set;

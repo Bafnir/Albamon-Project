@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Design.Conversion">
+    <Position X="5.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAABCAAQAAACAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>CU-ConvertirMonedas\Conversion.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Wallet" />
+      <Property Name="Cliente" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Design.Moneda">
+    <Position X="7.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAgIAAQAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>CU-ConvertirMonedas\Moneda.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="MonedasConvertidas" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Design.Usuario">
+    <Position X="13" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAgAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CU VenderNFT\Usuario.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Design.ApplicationUser" Collapsed="true">
+    <Position X="12.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAACCAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CU ALEJANDRO PÉREZ MARTÍNEZ\ApplicationUser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Design.Cliente">
+    <Position X="11" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CU VenderNFT\Cliente.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Conversiones" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Design.MonedaConvertida">
+    <Position X="3.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACACAAEAAAAAAAAAAAgAAQAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CU-ConvertirMonedas\MonedaConvertida.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Moneda" />
+      <Property Name="Conversion" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Design.Wallet">
+    <Position X="9.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAIAAAAAAAI=</HashCode>
+      <FileName>CU VenderNFT\Wallet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
