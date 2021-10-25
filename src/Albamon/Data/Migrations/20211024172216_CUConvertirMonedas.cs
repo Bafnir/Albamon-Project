@@ -55,9 +55,8 @@ namespace Albamon.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    MonedaId = table.Column<int>(type: "int", nullable: true),
                     Cantidad = table.Column<int>(type: "int", nullable: false),
-                    monedaId = table.Column<int>(type: "int", nullable: false),
+                    MonedaId = table.Column<int>(type: "int", nullable: false),
                     ConversionId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -74,7 +73,7 @@ namespace Albamon.Data.Migrations
                         column: x => x.MonedaId,
                         principalTable: "Moneda",
                         principalColumn: "MonedaId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

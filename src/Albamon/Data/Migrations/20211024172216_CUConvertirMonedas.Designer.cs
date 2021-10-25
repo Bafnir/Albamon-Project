@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Albamon.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211024171720_CUConvertirMonedas")]
+    [Migration("20211024172216_CUConvertirMonedas")]
     partial class CUConvertirMonedas
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -82,10 +82,7 @@ namespace Albamon.Data.Migrations
                     b.Property<int>("ConversionId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("MonedaId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("monedaId")
+                    b.Property<int>("MonedaId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -544,7 +541,9 @@ namespace Albamon.Data.Migrations
 
                     b.HasOne("Albamon.Models.Moneda", "Moneda")
                         .WithMany("MonedasConvertidas")
-                        .HasForeignKey("MonedaId");
+                        .HasForeignKey("MonedaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Conversion");
 

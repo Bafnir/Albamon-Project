@@ -80,10 +80,7 @@ namespace Albamon.Data.Migrations
                     b.Property<int>("ConversionId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("MonedaId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("monedaId")
+                    b.Property<int>("MonedaId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -542,7 +539,9 @@ namespace Albamon.Data.Migrations
 
                     b.HasOne("Albamon.Models.Moneda", "Moneda")
                         .WithMany("MonedasConvertidas")
-                        .HasForeignKey("MonedaId");
+                        .HasForeignKey("MonedaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Conversion");
 
