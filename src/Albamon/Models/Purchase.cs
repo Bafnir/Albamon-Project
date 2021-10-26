@@ -13,11 +13,11 @@ namespace Albamon.Models
         public virtual int PurchaseId { get; set; }
 
         public virtual double TotalPrice { get; set; }
+
         [Required]
         public virtual DateTime BuyDate { get; set; }
 
         [Required]
-
         public virtual ApplicationUser ApplicationUser { get; set; }
 
         public virtual IList<PurchaseNFT> PurchaseNFTS { get; set; }

@@ -55,8 +55,8 @@ namespace Albamon.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Cantidad = table.Column<int>(type: "int", nullable: false),
                     MonedaId = table.Column<int>(type: "int", nullable: false),
+                    Cantidad = table.Column<int>(type: "int", nullable: false),
                     ConversionId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
