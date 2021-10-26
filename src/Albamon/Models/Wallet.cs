@@ -11,7 +11,7 @@ namespace Albamon.Models
     public class Wallet
     {
         [Key]
-        public virtual int Dirección
+        public virtual int Direccion
         {
             get;
             set;
