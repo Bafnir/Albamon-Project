@@ -28,14 +28,13 @@ namespace Albamon.Data
         public DbSet<Conversion> Conversion { get; set; }
 
 
-
-
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
             builder.Entity<PurchaseNFT>()
             .HasKey(pi => new { pi.NftId, pi.PurchaseId });
         }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options){ }       
     }

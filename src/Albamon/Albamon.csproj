@@ -7,9 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Guardar clases\**" />
+    <Compile Remove="guardarclases\**" />
     <Compile Remove="guardar\**" />
+    <Content Remove="Guardar clases\**" />
+    <Content Remove="guardarclases\**" />
     <Content Remove="guardar\**" />
+    <EmbeddedResource Remove="Guardar clases\**" />
+    <EmbeddedResource Remove="guardarclases\**" />
     <EmbeddedResource Remove="guardar\**" />
+    <None Remove="Guardar clases\**" />
+    <None Remove="guardarclases\**" />
     <None Remove="guardar\**" />
   </ItemGroup>
 
@@ -25,11 +33,6 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Guardar clases\" />
-    <Folder Include="guardarclases\" />
   </ItemGroup>
 
 </Project>
