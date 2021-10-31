@@ -24,7 +24,7 @@ namespace Design
            
         }
 
-        public virtual int DNI
+        public virtual String DNI
         {
             get;
             set;
