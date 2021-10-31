@@ -22,7 +22,10 @@ namespace Albamon.Controllers
         // GET: Purchases
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Purchase.ToListAsync());
+            var applicationDbContext = _context.Purchase
+                .Include(p => p.User)
+                .Where(p => p.User.Email == User.Identity.Name);
+            return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: Purchases/Details/5
