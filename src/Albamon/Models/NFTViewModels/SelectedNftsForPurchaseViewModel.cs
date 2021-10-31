@@ -6,13 +6,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Albamon.Models.NFTViewModels
 {
-    public class SelectedMoviesForPurchaseViewModel
+    public class SelectedNftsForPurchaseViewModel
     {
         public string[] IdsToAdd { get; set; }
         [Display(Name = "Type")]
         public string TypeNFTSelected { get; set; }
-        [Display(Name = "Name")]
-        public string Name { get; set; }
+        [Display(Name = "Price")]
+        public Double Price { get; set; }
 
 
     }

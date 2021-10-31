@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Albamon.Data;
 using Albamon.Models;
+using Albamon.Models.NFTViewModels;
 
 namespace Albamon.Controllers
 {
@@ -149,5 +150,39 @@ namespace Albamon.Controllers
         {
             return _context.NFT.Any(e => e.NftId == id);
         }
+
+        //Get: Get NFTS FOR selection
+        [HttpGet]
+        public IActionResult SelectNftsForPurchase(string TypeNFTSelected, double Price)
+        {
+            SelectNftsForPurchasesViewModel selectnfts= new SelectNftsForPurchasesViewModel();
+            selectnfts.TypeNFTs = new SelectList(_context.TypeNFT.Select(g => g.Name).ToList());
+            selectnfts.NFTS = _context.NFT
+                .Include(m => m.TypeNFT) //join table Nft and table typenft
+                .Where(m => (m.Price < Price || Price == 0)
+                && (m.TypeNFT.Name.Contains(TypeNFTSelected) || TypeNFTSelected == null));
+
+            selectnfts.NFTS = selectnfts.NFTS.ToList();
+            return View(selectnfts);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult SelectNftsForPurchase(SelectedNftsForPurchaseViewModel selectedNfts)
+        {
+            if (selectedNfts.IdsToAdd != null)
+            {
+
+                return RedirectToAction("Create", "Purchases", selectedNfts);
+            }
+            //a message error will be shown to the customer in case no movies are selected
+            ModelState.AddModelError(string.Empty, "You must select at least one nft");
+
+            //the View SelectMoviesForPurchase will be shown again
+            return SelectNftsForPurchase(selectedNfts.TypeNFTSelected, selectedNfts.Price);
+        }
+
+
+
     }
 }

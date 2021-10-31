@@ -11,12 +11,12 @@ namespace Albamon.Models.NFTViewModels
     {
         public IEnumerable<NFT> NFTS { get; set; }
         //needed to populate a dropdownlist 
-        public SelectList TypeNFT;
+        public SelectList TypeNFTs;
         //needed to store the genre selected by the user
         [Display(Name = "Type")]
         public string TypeNFTSelected { get; set; }
 
-        [Display(Name = "Name")]
-        public string Name { get; set; }
+        [Display(Name = "Price")]
+        public Double Price { get; set; }
     }
 }

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Albamon.Data;
 using Albamon.Models;
+using Albamon.Models.NFTViewModels;
 
 namespace Albamon.Controllers
 {
@@ -51,6 +52,7 @@ namespace Albamon.Controllers
         {
             return View();
         }
+
 
         // POST: Purchases/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
