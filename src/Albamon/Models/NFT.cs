@@ -33,7 +33,7 @@ namespace Albamon.Models
 
         public virtual IList<PurchaseNFT> PurchaseNFTS { get; set; }
 
-        public virtual IList<ApplicationUser> ApplicationUsers { get; set; }
+        public virtual IList<Usuario> Usuarios { get; set; }
 
     }
 }

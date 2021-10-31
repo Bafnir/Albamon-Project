@@ -18,7 +18,7 @@ namespace Albamon.Models
         public virtual DateTime BuyDate { get; set; }
 
         [Required]
-        public virtual ApplicationUser ApplicationUser { get; set; }
+        public virtual Usuario User { get; set; }
 
         public virtual IList<PurchaseNFT> PurchaseNFTS { get; set; }
     }

@@ -37,7 +37,7 @@ namespace Design
 
         public virtual IList<VentaItem> VentaItems { get; set; }
 
-        public virtual IList<ApplicationUser> ApplicationUsers { get; set; }
+        public virtual IList<Usuario> Usuarios { get; set; }
 
 
 

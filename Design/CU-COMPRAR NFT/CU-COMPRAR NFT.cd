@@ -3,22 +3,22 @@
   <Class Name="Design.NFT">
     <Position X="5.75" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>IAAACAAAAQAAAAEAAAAAAAQAAIAAUAAEAAAgAAAAAAA=</HashCode>
-      <FileName>CU ALEJANDRO PÉREZ MARTÍNEZ\NFT.cs</FileName>
+      <HashCode>IAAACAAAAQAAAAEAAAAAAAQAAIAAUAAEAAAAAAAAAgA=</HashCode>
+      <FileName>CU-COMPRAR NFT\NFT.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="TypeNFT" />
     </ShowAsAssociation>
     <ShowAsCollectionAssociation>
       <Property Name="PurchaseNFTS" />
-      <Property Name="ApplicationUsers" />
+      <Property Name="Usuarios" />
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Design.PurchaseNFT">
     <Position X="8.75" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>IAQAAAAABAAAAAAgAAACBAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>CU ALEJANDRO PÉREZ MARTÍNEZ\PurchaseNFT.cs</FileName>
+      <FileName>CU-COMPRAR NFT\PurchaseNFT.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="NFT" />
@@ -29,42 +29,34 @@
     <Position X="2.5" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAgAAAAAAAAAAQAAACAAAAAAAAAgAAAAAA=</HashCode>
-      <FileName>CU ALEJANDRO PÉREZ MARTÍNEZ\TypeNFT.cs</FileName>
+      <FileName>CU-COMPRAR NFT\TypeNFT.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
       <Property Name="NFTS" />
-    </ShowAsCollectionAssociation>
-  </Class>
-  <Class Name="Design.ApplicationUser">
-    <Position X="11.75" Y="5" Width="1.5" />
-    <AssociationLine Name="NFTS" Type="Design.NFT" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="11.75" Y="5.125" />
-        <Point X="9.199" Y="5.125" />
-        <Point X="9.199" Y="4" />
-        <Point X="7.25" Y="4" />
-      </Path>
-    </AssociationLine>
-    <TypeIdentifier>
-      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAACCAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>CU ALEJANDRO PÉREZ MARTÍNEZ\ApplicationUser.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsCollectionAssociation>
-      <Property Name="NFTS" />
-      <Property Name="Purchases" />
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Design.Purchase">
     <Position X="11.5" Y="2.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAABAAAAAEYAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
-      <FileName>CU ALEJANDRO PÉREZ MARTÍNEZ\Purchase.cs</FileName>
+      <HashCode>AAAAAAAABAAAAAEIAAAAAAAAAAAAQAAAAAAEAAAAAAA=</HashCode>
+      <FileName>CU-COMPRAR NFT\Purchase.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="ApplicationUser" />
+      <Property Name="Usuario" />
     </ShowAsAssociation>
     <ShowAsCollectionAssociation>
       <Property Name="PurchaseNFTS" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Design.Usuario">
+    <Position X="11.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAEAAAAgAAAAAGAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CU VenderNFT\Usuario.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Purchases" />
+      <Property Name="NFTS" />
     </ShowAsCollectionAssociation>
   </Class>
   <Font Name="Segoe UI" Size="9" />
