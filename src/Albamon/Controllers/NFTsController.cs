@@ -161,7 +161,7 @@ namespace Albamon.Controllers
             selectnfts.TypeNFTs = new SelectList(_context.TypeNFT.Select(g => g.Name).ToList());
             selectnfts.NFTS = _context.NFT
                 .Include(m => m.TypeNFT) //join table Nft and table typenft
-                .Where(m => (m.Price < Price || Price == 0)
+                .Where(m => (m.Price <= Price || Price == 0)
                 && (m.TypeNFT.Name.Contains(TypeNFTSelected) || TypeNFTSelected == null));
 
             selectnfts.NFTS = selectnfts.NFTS.ToList();

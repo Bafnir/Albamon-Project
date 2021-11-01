@@ -18,5 +18,14 @@ namespace Albamon.Models
         public virtual string Name { get; set; }
         [Required]
         public virtual int Tier { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return obj is TypeNFT tnft &&
+                   Id == tnft.Id &&
+                   Description == tnft.Description &&
+                   Name == tnft.Name &&
+                   Tier == tnft.Tier;
+        }
     }
 }
