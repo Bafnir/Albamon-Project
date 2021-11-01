@@ -22,7 +22,10 @@ namespace Albamon.Controllers
         // GET: Ventas
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Ventas.ToListAsync());
+            var applicationDbContext = _context.Ventas
+                .Include(p => p.Cliente)
+                .Where(p => p.Cliente.Email == User.Identity.Name);
+            return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: Ventas/Details/5
@@ -150,38 +153,6 @@ namespace Albamon.Controllers
             return _context.Ventas.Any(e => e.VentaID == id);
         }
 
-        // GET: Movies/SelectMoviesForPurchase
-        [HttpGet]
-        public IActionResult SelectMoviesForPurchase(string movieTitle, string movieGenreSelected)
-        {
-            SelectMoviesForPurchaseViewModel selectMovies = new SelectMoviesForPurchaseViewModel();
-            selectMovies.Genres = new SelectList(_context.Genre.Select(g => g.Name).ToList());
-            selectMovies.Movies = _context.Movie
-                .Include(m => m.Genre) //join table Movie and table Genre
-                .Where(movie => movie.QuantityForPurchase > 0 // where clause
-                && (movie.Title.Contains(movieTitle) || movieTitle == null)
-                && (movie.Genre.Name.Contains(movieGenreSelected) || movieGenreSelected == null));
 
-            selectMovies.Movies = selectMovies.Movies.ToList();
-            return View(selectMovies);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult SelectMoviesForPurchase(SelectedMoviesForPurchaseViewModel selectedMovies)
-        {
-            if (selectedMovies.IdsToAdd != null)
-            {
-
-                return RedirectToAction("Create", selectedMovies);
-            }
-            //a message error will be shown to the customer in case no movies are selected
-            ModelState.AddModelError(string.Empty, "You must select at least one movie");
-
-            //the View SelectMoviesForPurchase will be shown again
-            return SelectMoviesForPurchase(selectedMovies.movieTitle, selectedMovies.movieGenreSelected);
-
-
-        }
     }
 }
