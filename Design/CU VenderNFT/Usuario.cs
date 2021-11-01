@@ -10,14 +10,14 @@ namespace Design
 {
     public class Usuario : ApplicationUser
     {
-        public virtual int Nombre
+        public virtual string Nombre
         {
             get;
             set;
             
         }
 
-        public virtual int Apellidos
+        public virtual string Apellidos
         {
             get;
             set;

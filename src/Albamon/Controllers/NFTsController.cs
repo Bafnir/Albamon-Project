@@ -152,7 +152,7 @@ namespace Albamon.Controllers
         }
         //Get: Get NFTS FOR selection
         [HttpGet]
-        public IActionResult SelectNftsForPurchase(string TypeNFTSelected, double Price)
+        public IActionResult SelectNftsForVenta(string TypeNFTSelected, double Price)
         {
             SelectNftsForVentasViewModel selectnfts = new SelectNftsForVentasViewModel();
             selectnfts.TypeNFTs = new SelectList(_context.TypeNFT.Select(g => g.Name).ToList());
@@ -167,18 +167,14 @@ namespace Albamon.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult SelectNftsForPurchase(SelectNftsForVentasViewModel selectedNfts)
+        public IActionResult SelectNftsForVenta(SelectNftsForVentasViewModel selectedNfts)
         {
-            if (selectedNfts.IdsToAdd != null)
-            {
-
-                return RedirectToAction("Create", "Purchases", selectedNfts);
-            }
+           
             //a message error will be shown to the customer in case no NFT are selected
             ModelState.AddModelError(string.Empty, "You must select at least one nft");
 
             //the View SelectNFTSForVenta will be shown again
-            return SelectNftsForPurchase(selectedNfts.TypeNFTSelected, selectedNfts.Price);
+            return SelectNftsForVenta(selectedNfts.TypeNFTSelected, selectedNfts.Price);
         }
 
 
