@@ -31,7 +31,7 @@ namespace Albamon.Data
 
             DirectoryInfo directoryData = new DirectoryInfo(".\\Data");
 
-            // Se obtienen todos los ficheros localizados en .\AppForMovies\Data que contienen un ".sql" en su nombre
+            // Se obtienen todos los ficheros localizados en .\Albamon\Data que contienen un ".sql" en su nombre
             foreach (FileInfo item in directoryData.GetFiles().Where(m => m.Name.Contains(".sql")))
             {
                 try
