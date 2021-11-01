@@ -35,5 +35,17 @@ namespace Albamon.Models
 
         public virtual IList<Usuario> Usuarios { get; set; }
 
+        public override bool Equals(object obj)
+        {
+            return obj is NFT nft &&
+                   NftId == nft.NftId &&
+                   Name == nft.Name &&
+                   Price == nft.Price &&
+                   Health == nft.Health &&
+                   Attack == nft.Attack &&
+                   Rarity == nft.Rarity &&
+                   EqualityComparer<TypeNFT>.Default.Equals(TypeNFT, nft.TypeNFT);
+        }
+
     }
 }

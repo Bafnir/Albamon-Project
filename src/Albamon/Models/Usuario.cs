@@ -28,8 +28,7 @@ namespace Albamon.Models
         {
             get;
             set;
-            
-        }
+        }       
         public virtual IList<NFT> NFTS { get; set; }
 
         public virtual IList<Purchase> Purchases { get; set; }
