@@ -22,9 +22,12 @@ namespace Albamon.Controllers
         // GET: Conversions
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Conversion.Include(c => c.Cliente);
+            var applicationDbContext = _context.Conversion
+                .Include(p => p.Cliente)
+                .Where(p => p.Cliente.Email == User.Identity.Name);
             return View(await applicationDbContext.ToListAsync());
-        }
+        
+    }
 
         // GET: Conversions/Details/5
         public async Task<IActionResult> Details(int? id)
