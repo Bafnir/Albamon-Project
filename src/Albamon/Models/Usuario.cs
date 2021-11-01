@@ -24,7 +24,7 @@ namespace Albamon.Models
            
         }
 
-        public virtual int DNI
+        public virtual string DNI
         {
             get;
             set;
