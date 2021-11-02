@@ -44,20 +44,23 @@
       <FileName>CU-COMPRAR NFT\PurchaseNFT.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="Purchase" />
       <Property Name="NFT" />
+      <Property Name="Purchase" />
     </ShowAsAssociation>
   </Class>
   <Class Name="Design.Usuario">
     <Position X="10.25" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAAAAAAAAEAAAAgAAAAAGAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAgAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>CU VenderNFT\Usuario.cs</FileName>
     </TypeIdentifier>
-    <ShowAsCollectionAssociation>
-      <Property Name="Purchases" />
-      <Property Name="NFTS" />
-    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Design.ApplicationUser">
+    <Position X="7.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CU-COMPRAR NFT\ApplicationUser.cs</FileName>
+    </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
