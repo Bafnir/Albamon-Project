@@ -8,9 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using Albamon.Data;
 using Albamon.Models;
 using Albamon.Models.NFTViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Albamon.Controllers
 {
+    [Authorize]
     public class VentasController : Controller
     {
         private readonly ApplicationDbContext _context;
