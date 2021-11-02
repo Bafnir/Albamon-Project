@@ -114,7 +114,7 @@ namespace Albamon.Data
                 user.UserName = "peter@uclm.com";
                 user.Email = "peter@uclm.com";
                 user.Nombre = "Peter";
-                user.Apellidos = "Jackson";
+                user.Apellidos= "Jackson";
                 user.Wallet = "0xffs4aaooe";
                 user.EmailConfirmed = true;
 

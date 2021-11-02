@@ -25,16 +25,22 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-                        <li>
+                                <li>
+                        <a class="nav-link text-dark"asp-area="" asp-controller="NFTS" asp-action="SelectNftsForPurchase">Purchase</a>
+                                </li>
+                                <li>
+                        <a class="nav-link text-dark"asp-area="" asp-controller="NFTS" asp-action="Index">NFT</a>
+                                </li>
+                          <li>
                             <a class="nav-link text-dark" asp-area="" asp-controller="Ventas" asp-action="Index">Purchase</a>
                         </li>
                         <li>
                             <a class="nav-link text-dark" asp-area="" asp-controller="NFTS" asp-action="Index">NFT</a>
                         </li>
+                        </div>
+                    </ul>
+                    <partial name="_LoginPartial" />
                 </div>
-                </ul>
-                <partial name="_LoginPartial" />
-            </div>
             </div>
         </nav>
     </header>

@@ -13,13 +13,22 @@ namespace Albamon.Models
         public virtual int PurchaseId { get; set; }
 
         public virtual double TotalPrice { get; set; }
+
         [Required]
         public virtual DateTime BuyDate { get; set; }
 
         [Required]
-
-        public virtual ApplicationUser ApplicationUser { get; set; }
+        public virtual Usuario User { get; set; }
 
         public virtual IList<PurchaseNFT> PurchaseNFTS { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Purchase purchase &&
+                   PurchaseId == purchase.PurchaseId &&
+                   TotalPrice == purchase.TotalPrice &&
+                   BuyDate == purchase.BuyDate &&
+                   EqualityComparer<Usuario>.Default.Equals(User, purchase.User);
+        }
     }
 }
