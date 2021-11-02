@@ -13,10 +13,11 @@ namespace Albamon.Models.NFTViewModels
         //needed to populate a dropdownlist 
         public SelectList TypeNFTs;
         //needed to store the type selected by the user
-        [Display(Name = "Type")]
+        [Display(Name = "Tipo NFT")]
         public string TypeNFTSelected { get; set; }
 
-        [Display(Name = "Price")]
+        [Display(Name = "Precio")]
         public Double Price { get; set; }
+
     }
 }

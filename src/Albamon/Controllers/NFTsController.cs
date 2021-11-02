@@ -186,7 +186,7 @@ namespace Albamon.Controllers
 
 
 
-    }
+    
 
  //Get: Get NFTS FOR selection
         [HttpGet]
@@ -217,4 +217,4 @@ public IActionResult SelectNftsForVenta(SelectNftsForVentasViewModel selectedNft
 
 
     }
-}
+        }
