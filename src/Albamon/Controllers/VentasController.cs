@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Albamon.Data;
 using Albamon.Models;
+using Albamon.Models.NFTViewModels;
 
 namespace Albamon.Controllers
 {
