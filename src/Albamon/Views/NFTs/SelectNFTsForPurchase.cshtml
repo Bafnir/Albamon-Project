@@ -1,0 +1,72 @@
+﻿@* model storing which data will be rendered by the View *@
+@model Albamon.Models.NFTViewModels.SelectNftsForPurchasesViewModel
+@{
+    ViewData["Title"] = "Select NFT";
+}
+
+<h2>Purchase Nfts</h2>
+@* Form to fill in the filters to be used *@
+<form asp-controller="NFTs" class="form-horizontal">
+    <p>
+        <div>
+            <label asp-for="Price"></label>
+            <input asp-for="Price" size="50" />
+            <span asp-validation-for="Price" class="text-danger"></span>
+
+            <label asp-for="TypeNFTSelected"></label>
+            <select asp-for="TypeNFTSelected" asp-items="Model.TypeNFTs">
+                <option value="">All</option>
+            </select>
+            <input id="filterbyPriceType" asp-action="SelectNftsForPurchase" type="submit" value="Filter" formmethod="get" />
+        </div>
+    </p>
+
+    <div id="ModelErrors" asp-validation-summary="All" class="text-danger">@TempData["Error"]</div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th width="50%">
+                    Name
+                </th>
+                <th>
+                    Type
+                </th>
+                <th>
+                    Price
+                </th>
+                <th align="center" width="10%">
+                    Select NFT
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.NFTS.Count() == 0)
+            {
+                <tr><td id="NoNFTS" colspan="3">There are no NFTS available</td></tr>
+            }
+            else
+            {
+                @foreach (var item in Model.NFTS)
+                {
+        <tr id="NFT_Title_@item.TypeNFT.Name">
+            <td width="50%">
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td >
+                @Html.DisplayFor(modelItem => item.TypeNFT.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td align="center" width="10%">
+                <input type="checkbox" name="IdsToAdd" id="Movie_@item.NftId" value="@item.NftId" class="form-control">
+            </td>
+        </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <button id="nextButton" asp-action="SelectNftsForPurchase" type="submit" class="btn btn-primary" formmethod="post">Next</button>
+    <a asp-action="Index" class="btn btn-default">Cancel</a>
+</form>

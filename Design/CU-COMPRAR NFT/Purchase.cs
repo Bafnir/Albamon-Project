@@ -19,7 +19,7 @@ namespace Design
 
         [Required]
 
-        public virtual ApplicationUser ApplicationUser { get; set; }
+        public virtual Usuario Usuario { get; set; }
 
         public virtual IList<PurchaseNFT> PurchaseNFTS { get; set; }
     }

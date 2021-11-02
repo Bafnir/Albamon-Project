@@ -10,21 +10,21 @@ namespace Albamon.Models
 {
     public class Usuario : ApplicationUser
     {
-        public virtual int Nombre
+        public virtual string Nombre
         {
             get;
             set;
             
         }
 
-        public virtual int Apellidos
+        public virtual string Apellidos
         {
             get;
             set;
            
         }
 
-        public virtual int DNI
+        public virtual string DNI
         {
             get;
             set;
