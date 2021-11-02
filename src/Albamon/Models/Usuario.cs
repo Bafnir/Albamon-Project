@@ -10,28 +10,25 @@ namespace Albamon.Models
 {
     public class Usuario : ApplicationUser
     {
-        public virtual String Nombre
+        public virtual string Nombre
         {
             get;
             set;
             
         }
 
-        public virtual String Apellidos
+        public virtual string Apellidos
         {
             get;
             set;
            
         }
 
-        public virtual String DNI
+        public virtual string DNI
         {
             get;
             set;
-        }       
-        public virtual IList<NFT> NFTS { get; set; }
-
-        public virtual IList<Purchase> Purchases { get; set; }
-
+            
+        }
     }
 }
