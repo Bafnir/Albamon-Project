@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Albamon.Models.Purchase>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<h2>Purchases</h2>
+
+<form asp-controller="NFTS" asp-action="Index" method="get">
+    <p>
+        Name: <input type="text" name="SearchString">
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BuyDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BuyDate)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.PurchaseId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.PurchaseId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.PurchaseId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>
+    <a asp-action="Create">Comprar</a>
+</p>

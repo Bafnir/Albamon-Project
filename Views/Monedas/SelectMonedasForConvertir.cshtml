@@ -1,0 +1,69 @@
+﻿@* model storing which data will be rendered by the View *@
+@model Albamon.Models.NFTViewModels.SelectMonedasForConvertirViewModel
+@{
+    ViewData["Title"] = "Select Moneda";
+}
+
+<h2>Change Moneda</h2>
+@* Form to fill in the filters to be used *@
+<form asp-controller="Monedas" class="form-horizontal">
+    <p>
+        <div>
+            <label asp-for="Price"></label>
+            <input asp-for="Price" size="50" />
+            <span asp-validation-for="monedas" class="text-danger"></span>
+
+            <label asp-for="TypeMonedaSelected"></label>
+            <select asp-for="TypeMonedaSelected" asp-items="Model.Typemoneda">
+                <option value="">All</option>
+            </select>
+            <input id="filterbyPriceType" asp-action="SelectMonedasForConvertir" type="submit" value="Filter" formmethod="get" />
+        </div>
+    </p>
+
+    <div id="ModelErrors" asp-validation-summary="All" class="text-danger">@TempData["Error"]</div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th width="50%">
+                    Nombre
+                </th>
+                <th>
+                    Id
+                </th>
+                
+                <th align="center" width="10%">
+                    Select Coin
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.monedas.Count() == 0)
+            {
+                <tr><td id="NoMonedas" colspan="3">There are no monedas avaliable</td></tr>
+            }
+            else
+            {
+                @foreach (var item in Model.monedas)
+                {
+                    <tr id="Moneda_Title_@item.MonedasConvertidas.Count">
+                        <td width="50%">
+                            @Html.DisplayFor(modelItem => item.Nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MonedaId)
+                        </td>
+                        
+                        <td align="center" width="10%">
+                            <input type="checkbox" nombre="IdsToAdd" id="Movie_@item.MonedaId" value="@item.MonedaId" class="form-control">
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <button id="nextButton" asp-action="SelectMonedaForConvertir" type="submit" class="btn btn-primary" formmethod="post">Next</button>
+    <a asp-action="Index" class="btn btn-default">Cancel</a>
+</form>
+
