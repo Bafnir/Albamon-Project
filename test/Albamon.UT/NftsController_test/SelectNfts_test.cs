@@ -77,5 +77,53 @@ namespace Albamon.UT.NftsController_test
                 Assert.True(expectedTypeNftsNames.SequenceEqual(modelTypeNfts));
             }
         }
+
+        [Fact]
+        public void SelectNftsForPurchase_Post_NftsNotSelected()
+        {
+            using (context)
+            {
+                // Arrange
+                var controller = new NFTsController(context);
+                controller.ControllerContext.HttpContext = purchaseContext;
+                //we create an array that is a list names of genres
+                var expectedTypeNfts = UtilitiesForNfts.GetTypeNfts(0, 2).Select(g => new { nameofTypeNft = g.Name });
+                var expectedNfts = UtilitiesForNfts.GetNfts(0, 4);
+                SelectedNftsForPurchaseViewModel selected = new SelectedNftsForPurchaseViewModel { IdsToAdd = null };
+                // Act
+                var result = controller.SelectNftsForPurchase(selected);
+                //Assert
+                var viewResult = Assert.IsType<ViewResult>(result); // Check the controller returns a view
+                SelectNftsForPurchasesViewModel model = viewResult.Model as SelectNftsForPurchasesViewModel;
+                // Check that both collections (expected and result returned) have the same elements with the same name
+                Assert.Equal(expectedNfts, model.NFTS);
+                //check that both collections (expected and result) have the same names of Genre
+                var modelTypeNfts = model.TypeNFTs.Select(g => new { nameofTypeNft = g.Text });
+                Assert.True(expectedTypeNfts.SequenceEqual(modelTypeNfts));
+            }
+        }
+
+        [Fact]
+        public void SelectNftsForPurchase_Post_NftsSelected()
+        {
+            using (context)
+            {
+                // Arrange
+                var controller = new NFTsController(context);
+                controller.ControllerContext.HttpContext = purchaseContext;
+
+                String[] ids = new string[1] { "1" };
+                SelectedNftsForPurchaseViewModel nfts = new SelectedNftsForPurchaseViewModel { IdsToAdd = ids };
+
+                // Act
+                var result = controller.SelectNftsForPurchase(nfts);
+
+                //Assert
+                var viewResult = Assert.IsType<RedirectToActionResult>(result);
+                var currentNfts = viewResult.RouteValues.Values.First();
+                Assert.Equal(nfts.IdsToAdd, currentNfts);
+
+            }
+        }
     }
 }
