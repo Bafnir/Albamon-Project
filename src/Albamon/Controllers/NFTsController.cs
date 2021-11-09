@@ -186,5 +186,35 @@ namespace Albamon.Controllers
 
 
 
-    }
+    
+
+ //Get: Get NFTS FOR selection
+        [HttpGet]
+public IActionResult SelectNftsForVenta(string TypeNFTSelected, double Price)
+{
+    SelectNftsForVentasViewModel selectnfts = new SelectNftsForVentasViewModel();
+    selectnfts.TypeNFTs = new SelectList(_context.TypeNFT.Select(g => g.Name).ToList());
+    selectnfts.NFTS = _context.NFT
+        .Include(m => m.TypeNFT) //join table NFT and table typenft
+        .Where(m => (m.Price < Price || Price == 0)
+        && (m.TypeNFT.Name.Contains(TypeNFTSelected) || TypeNFTSelected == null));
+
+    selectnfts.NFTS = selectnfts.NFTS.ToList();
+    return View(selectnfts);
 }
+
+[HttpPost]
+[ValidateAntiForgeryToken]
+public IActionResult SelectNftsForVenta(SelectNftsForVentasViewModel selectedNfts)
+{
+
+    //a message error will be shown to the customer in case no NFT are selected
+    ModelState.AddModelError(string.Empty, "You must select at least one nft");
+
+    //the View SelectNFTSForVenta will be shown again
+    return SelectNftsForVenta(selectedNfts.TypeNFTSelected, selectedNfts.Price);
+}
+
+
+    }
+        }
