@@ -46,26 +46,13 @@ namespace Albamon.Models.PurchaseViewModels
             set;
         }
 
+        public double Fee
+        {
+            get;
+            set;
+        }
+
         public virtual IList<PurchaseNFTViewModel> PurchaseNFTs
-        {
-            get;
-            set;
-        }
-
-
-        [DataType(DataType.MultilineText)]
-        [Display(Name = "Delivery Address")]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Please, set your address for delivery")]
-
-        public String DeliveryAddress
-        {
-            get;
-            set;
-        }
-
-        [Display(Name = "Payment Method")]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Please, select your payment method for delivery")]
-        public String PaymentMethod
         {
             get;
             set;
@@ -130,9 +117,9 @@ namespace Albamon.Models.PurchaseViewModels
             }
 
             //it is checked whether quantity is higher than 0 for at least one movie
-            if (PurchaseItems.Sum(pi => pi.Quantity) <= 0)
+            if (PurchaseNFTs.Sum(pi => pi.Quantity) <= 0)
                 yield return new ValidationResult("Please, select Quantity higher than 0 for at least one movie",
-                     new[] { nameof(PurchaseItems) });
+                     new[] { nameof(PurchaseNFTs) });
 
 
 

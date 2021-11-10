@@ -116,6 +116,7 @@ namespace Albamon.Data
                 user.Nombre = "Peter";
                 user.Apellidos= "Jackson";
                 user.Wallet = "0xffs4aaooe";
+                user.Saldo = 100;
                 user.EmailConfirmed = true;
 
                 IdentityResult result = userManager.CreateAsync(user, "OtherPass12$").Result;
