@@ -91,44 +91,19 @@ namespace Albamon.Models.PurchaseViewModels
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (PaymentMethod == "CreditCard")
-            {
-                if (CreditCardNumber == null)
-                    yield return new ValidationResult("Please, fill in your Credit Card Number for your Credit Card payment",
-                        new[] { nameof(CreditCardNumber) });
-                if (CCV == null)
-                    yield return new ValidationResult("Please, fill in your CCV for your Credit Card payment",
-                        new[] { nameof(CCV) });
-                if (ExpirationDate == null)
-                    yield return new ValidationResult("Please, fill in your ExpirationDate for your Credit Card payment",
-                        new[] { nameof(ExpirationDate) });
-            }
-            else
-            {
-                if (Email == null)
-                    yield return new ValidationResult("Please, fill in your Email for your PayPal payment",
-                        new[] { nameof(Email) });
-                if (Prefix == null)
-                    yield return new ValidationResult("Please, fill in your Prefix for your PayPal payment",
-                        new[] { nameof(Prefix) });
-                if (Phone == null)
-                    yield return new ValidationResult("Please, fill in your Phone for your PayPal payment",
-                        new[] { nameof(Phone) });
-            }
-
+                if (Fee == null)
+                    yield return new ValidationResult("Please, always imput a fee, it is required for the blockchain to complete the transaction",
+                        new[] { nameof(Fee) });
             //it is checked whether quantity is higher than 0 for at least one movie
             if (PurchaseNFTs.Sum(pi => pi.Quantity) <= 0)
                 yield return new ValidationResult("Please, select Quantity higher than 0 for at least one movie",
                      new[] { nameof(PurchaseNFTs) });
-
-
-
         }
     }
 
     public class PurchaseNFTViewModel
     {
-        public virtual int MovieID
+        public virtual int NftId
         {
             get;
             set;
@@ -136,7 +111,7 @@ namespace Albamon.Models.PurchaseViewModels
 
 
         [StringLength(50, ErrorMessage = "First name cannot be longer than 50 characters.")]
-        public virtual String Title
+        public virtual String Name
         {
             get;
             set;
@@ -144,14 +119,14 @@ namespace Albamon.Models.PurchaseViewModels
 
 
         [Display(Name = "Price For Purchase")]
-        public virtual int PriceForPurchase
+        public virtual double Price
         {
             get;
             set;
         }
 
 
-        public virtual String Genre
+        public virtual String TypeNFT
         {
             get;
             set;
@@ -166,12 +141,12 @@ namespace Albamon.Models.PurchaseViewModels
 
         public override bool Equals(object obj)
         {
-            PurchaseItemViewModel purchaseItem = obj as PurchaseItemViewModel;
+            PurchaseNFTViewModel purchaseNft = obj as PurchaseNFTViewModel;
             bool result = false;
-            if ((MovieID == purchaseItem.MovieID)
-                && (this.PriceForPurchase == purchaseItem.PriceForPurchase)
-                    && (this.Quantity == purchaseItem.Quantity)
-                    && (this.Title == purchaseItem.Title))
+            if ((NftId == purchaseNft.NftId)
+                && (this.Price == purchaseNft.Price)
+                    && (this.Quantity == purchaseNft.Quantity)
+                    && (this.Name == purchaseNft.Name))
                 result = true;
             return result;
         }

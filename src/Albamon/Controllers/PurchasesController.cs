@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Albamon.Data;
 using Albamon.Models;
 using Albamon.Models.NFTViewModels;
+using Albamon.Models.PurchaseViewModels;
 using Microsoft.AspNetCore.Authorization;
 
 namespace Albamon.Controllers
@@ -50,36 +51,29 @@ namespace Albamon.Controllers
         }
 
         // GET: Purchases/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
-        // GET: Purchases/Create
-        public IActionResult Create(SelectedNftsForPurchaseViewModel selectedMovies)
+        public IActionResult Create(SelectedNftsForPurchaseViewModel selectedNfts)
         {
             PurchaseCreateViewModel purchase = new();
-            purchase.PurchaseItems = new List<PurchaseItemViewModel>();
+            purchase.PurchaseNFTs = new List<PurchaseNFTViewModel>();
 
-            if (selectedMovies.IdsToAdd == null)
+            if (selectedNfts.IdsToAdd == null)
             {
-                ModelState.AddModelError("MovieNoSelected", "You should select at least a Movie to be purchased, please");
+                ModelState.AddModelError("MovieNoSelected", "You should select at least a NFT to be purchased, please");
             }
             else
-                purchase.PurchaseItems = _context.Movie.Include(movie => movie.Genre)
-                    .Select(movie => new PurchaseItemViewModel()
+                purchase.PurchaseNFTs = _context.NFT.Include(NFT => NFT.TypeNFT)
+                    .Select(NFT => new PurchaseNFTViewModel()
                     {
-                        MovieID = movie.MovieID,
-                        Genre = movie.Genre.Name,
-                        PriceForPurchase = movie.PriceForPurchase,
-                        Title = movie.Title
+                        NftId = NFT.NftId,
+                        TypeNFT = NFT.TypeNFT.Name,
+                        Price = NFT.Price,
+                        Name = NFT.Name
                     })
-                    .Where(movie => selectedMovies.IdsToAdd.Contains(movie.MovieID.ToString())).ToList();
+                    .Where(NFT => selectedNfts.IdsToAdd.Contains(NFT.NftId.ToString())).ToList();
 
-            Customer Customer = _context.Users.OfType<Customer>().FirstOrDefault<Customer>(u => u.UserName.Equals(User.Identity.Name));
-            purchase.Name = Customer.Name;
-            purchase.FirstSurname = Customer.FirstSurname;
-            purchase.SecondSurname = Customer.SecondSurname;
-
+            Usuario usuario= _context.Users.OfType<Usuario>().FirstOrDefault<Usuario>(u => u.UserName.Equals(User.Identity.Name));
+            purchase.Nombre = usuario.Nombre;
+            purchase.Apellidos = usuario.Apellidos;
             return View(purchase);
         }
 
