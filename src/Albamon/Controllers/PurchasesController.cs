@@ -54,6 +54,35 @@ namespace Albamon.Controllers
         {
             return View();
         }
+        // GET: Purchases/Create
+        public IActionResult Create(SelectedNftsForPurchaseViewModel selectedMovies)
+        {
+            PurchaseCreateViewModel purchase = new();
+            purchase.PurchaseItems = new List<PurchaseItemViewModel>();
+
+            if (selectedMovies.IdsToAdd == null)
+            {
+                ModelState.AddModelError("MovieNoSelected", "You should select at least a Movie to be purchased, please");
+            }
+            else
+                purchase.PurchaseItems = _context.Movie.Include(movie => movie.Genre)
+                    .Select(movie => new PurchaseItemViewModel()
+                    {
+                        MovieID = movie.MovieID,
+                        Genre = movie.Genre.Name,
+                        PriceForPurchase = movie.PriceForPurchase,
+                        Title = movie.Title
+                    })
+                    .Where(movie => selectedMovies.IdsToAdd.Contains(movie.MovieID.ToString())).ToList();
+
+            Customer Customer = _context.Users.OfType<Customer>().FirstOrDefault<Customer>(u => u.UserName.Equals(User.Identity.Name));
+            purchase.Name = Customer.Name;
+            purchase.FirstSurname = Customer.FirstSurname;
+            purchase.SecondSurname = Customer.SecondSurname;
+
+            return View(purchase);
+        }
+
 
 
         // POST: Purchases/Create
