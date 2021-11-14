@@ -30,5 +30,6 @@ namespace Design
             set;
             
         }
+        public virtual double Saldo { get; set; }
     }
 }

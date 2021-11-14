@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Albamon.Data;
 using Albamon.Models;
 using Albamon.Models.NFTViewModels;
+using Albamon.Models.PurchaseViewModels;
 using Microsoft.AspNetCore.Authorization;
 
 namespace Albamon.Controllers
@@ -50,10 +51,32 @@ namespace Albamon.Controllers
         }
 
         // GET: Purchases/Create
-        public IActionResult Create()
+        public IActionResult Create(SelectedNftsForPurchaseViewModel selectedNfts)
         {
-            return View();
+            PurchaseCreateViewModel purchase = new();
+            purchase.PurchaseNFTs = new List<PurchaseNFTViewModel>();
+
+            if (selectedNfts.IdsToAdd == null)
+            {
+                ModelState.AddModelError("MovieNoSelected", "You should select at least a NFT to be purchased, please");
+            }
+            else
+                purchase.PurchaseNFTs = _context.NFT.Include(NFT => NFT.TypeNFT)
+                    .Select(NFT => new PurchaseNFTViewModel()
+                    {
+                        NftId = NFT.NftId,
+                        TypeNFT = NFT.TypeNFT.Name,
+                        Price = NFT.Price,
+                        Name = NFT.Name
+                    })
+                    .Where(NFT => selectedNfts.IdsToAdd.Contains(NFT.NftId.ToString())).ToList();
+
+            Usuario usuario= _context.Users.OfType<Usuario>().FirstOrDefault<Usuario>(u => u.UserName.Equals(User.Identity.Name));
+            purchase.Nombre = usuario.Nombre;
+            purchase.Apellidos = usuario.Apellidos;
+            return View(purchase);
         }
+
 
 
         // POST: Purchases/Create
