@@ -30,5 +30,6 @@ namespace Albamon.Models
             set;
             
         }
+        public virtual double Saldo { get; set; }
     }
 }
