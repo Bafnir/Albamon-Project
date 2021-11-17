@@ -15,6 +15,9 @@ namespace Albamon.Models
         public virtual double TotalPrice { get; set; }
 
         [Required]
+        public virtual double Fees { get; set; }
+
+        [Required]
         public virtual DateTime BuyDate { get; set; }
 
         [Required]
