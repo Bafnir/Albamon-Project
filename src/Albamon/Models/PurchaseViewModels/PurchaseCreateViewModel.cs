@@ -46,7 +46,7 @@ namespace Albamon.Models.PurchaseViewModels
             set;
         }
 
-        [DataType(DataType.Custom)]
+        [DataType(DataType.Text)]
         [Display(Name = "Gas fee")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Please, set your gas fee")]
 
