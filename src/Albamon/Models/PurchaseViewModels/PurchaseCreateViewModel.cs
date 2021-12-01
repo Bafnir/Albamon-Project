@@ -28,7 +28,7 @@ namespace Albamon.Models.PurchaseViewModels
         }
 
         //It will be necessary whenever we need a relationship with ApplicationUser or any child class
-        public string UserId
+        public string UsuarioId
         {
             get;
             set;
@@ -46,6 +46,10 @@ namespace Albamon.Models.PurchaseViewModels
             set;
         }
 
+        [DataType(DataType.Custom)]
+        [Display(Name = "Gas fee")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Please, set your gas fee")]
+
         public double Fee
         {
             get;
@@ -61,10 +65,6 @@ namespace Albamon.Models.PurchaseViewModels
         [EmailAddress]
         public string Email { get; set; }
 
-        [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MMM/yyyy}")]
-        public virtual DateTime? ExpirationDate { get; set; }
-
         public PurchaseCreateViewModel()
         {
 
@@ -77,11 +77,11 @@ namespace Albamon.Models.PurchaseViewModels
             if (obj is PurchaseCreateViewModel model)
                 result = Nombre == model.Nombre &&
                   Apellidos == model.Apellidos &&
-                  UserId == model.UserId &&
+                  UsuarioId == model.UsuarioId &&
+                  Fee == model.Fee &&
                   TotalPrice == model.TotalPrice &&
                   BuyDate == model.BuyDate &&
-                  Email == model.Email &&
-                  ExpirationDate == model.ExpirationDate;
+                  Email == model.Email;
             else
                 return false;
             for (int i = 0; i < this.PurchaseNFTs.Count; i++)

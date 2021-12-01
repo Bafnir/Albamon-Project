@@ -58,7 +58,7 @@ namespace Albamon.Controllers
 
             if (selectedNfts.IdsToAdd == null)
             {
-                ModelState.AddModelError("MovieNoSelected", "You should select at least a NFT to be purchased, please");
+                ModelState.AddModelError("NftNoSelected", "You should select at least a NFT to be purchased, please");
             }
             else
                 purchase.PurchaseNFTs = _context.NFT.Include(NFT => NFT.TypeNFT)
