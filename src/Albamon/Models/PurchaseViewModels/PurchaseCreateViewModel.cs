@@ -46,7 +46,7 @@ namespace Albamon.Models.PurchaseViewModels
             set;
         }
 
-        [DataType(DataType.Text)]
+        [DataType(DataType.Currency)]
         [Display(Name = "Gas fee")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Please, set your gas fee")]
 
@@ -94,9 +94,12 @@ namespace Albamon.Models.PurchaseViewModels
                 if (Fee == null)
                     yield return new ValidationResult("Please, always imput a fee, it is required for the blockchain to complete the transaction",
                         new[] { nameof(Fee) });
+                if(Fee < 0)
+                    yield return new ValidationResult("Fee must be a positive number",
+                        new[] { nameof(Fee) });
             //it is checked whether quantity is higher than 0 for at least one movie
             if (PurchaseNFTs.Sum(pi => pi.Quantity) <= 0)
-                yield return new ValidationResult("Please, select Quantity higher than 0 for at least one movie",
+                yield return new ValidationResult("Please, select Quantity higher than 0 for at least one nft",
                      new[] { nameof(PurchaseNFTs) });
         }
     }
@@ -132,7 +135,7 @@ namespace Albamon.Models.PurchaseViewModels
             set;
         }
 
-        [Required]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Please, set your gas fee")]
         public virtual int Quantity
         {
             get;
@@ -141,12 +144,12 @@ namespace Albamon.Models.PurchaseViewModels
 
         public override bool Equals(object obj)
         {
-            PurchaseNFTViewModel purchaseNft = obj as PurchaseNFTViewModel;
+            PurchaseNFTViewModel purchaseNFT = obj as PurchaseNFTViewModel;
             bool result = false;
-            if ((NftId == purchaseNft.NftId)
-                && (this.Price == purchaseNft.Price)
-                    && (this.Quantity == purchaseNft.Quantity)
-                    && (this.Name == purchaseNft.Name))
+            if ((NftId == purchaseNFT.NftId)
+                && (this.Price == purchaseNFT.Price)
+                    && (this.Quantity == purchaseNFT.Quantity)
+                    && (this.Name == purchaseNFT.Name))
                 result = true;
             return result;
         }
