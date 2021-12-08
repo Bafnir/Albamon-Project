@@ -31,5 +31,22 @@ namespace Albamon.Models
             
         }
         public virtual double Saldo { get; set; }
+
+        public virtual IList<Purchase> Purchases
+        {
+            get;
+            set;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Usuario usuario &&
+                   Nombre == usuario.Nombre &&
+                   Apellidos == usuario.Apellidos &&
+                   Id == usuario.Id &&
+                   UserName == usuario.UserName &&
+                   PhoneNumber == usuario.PhoneNumber;
+        }
     }
+
 }

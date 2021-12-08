@@ -120,6 +120,12 @@ namespace Albamon.Models.PurchaseViewModels
             set;
         }
 
+        public virtual Double Fee
+        {
+            get;
+            set;
+        }
+
 
         [Display(Name = "Price For Purchase")]
         public virtual double Price
@@ -135,7 +141,7 @@ namespace Albamon.Models.PurchaseViewModels
             set;
         }
 
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Please, set your gas fee")]
+        [Required]
         public virtual int Quantity
         {
             get;

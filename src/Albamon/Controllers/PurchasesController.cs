@@ -115,19 +115,24 @@ namespace Albamon.Controllers
                 foreach (PurchaseNFTViewModel item in purchaseViewModel.PurchaseNFTs)
                 {
                     nft = await _context.NFT.FirstOrDefaultAsync<NFT>(m => m.NftId == item.NftId);
-
                     if (item.Quantity > 0) {
                         purchaseNFT = new PurchaseNFT
                         {
                             NFT = nft,
                             Purchase = purchase,
-                            Quantity = item.Quantity
-                        };
+                            Quantity = item.Quantity,
+                            Fee = purchaseViewModel.Fee
+                    };
 
-                            purchase.TotalPrice += item.Quantity * nft.Price;
+                        purchase.TotalPrice += item.Quantity * nft.Price;
                         purchase.PurchaseNFTS.Add(purchaseNFT);
                     }
                 }
+            }
+            purchase.Fees = purchaseViewModel.Fee;
+            if (purchase.Fees < 2)
+            {
+                ModelState.AddModelError("", $"The amount of fee introduced is not enough, please select more than 2");
             }
 
             if (ModelState.ErrorCount > 0)
@@ -140,8 +145,6 @@ namespace Albamon.Controllers
 
             purchase.User = usuario;
             purchase.BuyDate = DateTime.Now;
-
-            purchase.Fees = purchaseViewModel.Fee;
             _context.Add(purchase);
             await _context.SaveChangesAsync();
             return RedirectToAction("Details", new { id = purchase.PurchaseId });
