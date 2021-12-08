@@ -17,7 +17,7 @@
   <Class Name="Design.Purchase">
     <Position X="10.25" Y="1" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAABAAAAAEIAAAAAAAAAAAAQAAAAAAEAAAAAAA=</HashCode>
+      <HashCode>AAABAAAABAAAAAEIAAAAAAAAAAAAQAAAAAAEAAAAAAA=</HashCode>
       <FileName>CU-COMPRAR NFT\Purchase.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -40,7 +40,7 @@
   <Class Name="Design.PurchaseNFT">
     <Position X="6.75" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>IAQAAAAABAAAAAAgAAACBAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>IAQAAAAABAAAAAAgAAACBAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
       <FileName>CU-COMPRAR NFT\PurchaseNFT.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -51,9 +51,12 @@
   <Class Name="Design.Usuario">
     <Position X="10.25" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAEAAAAgAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAAAAAAAAAAAEgAAAgAAAAAEAAAAAAAIAAAAAAAA=</HashCode>
       <FileName>CU VenderNFT\Usuario.cs</FileName>
     </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Purchases" />
+    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Design.ApplicationUser">
     <Position X="7.5" Y="6.5" Width="1.5" />
