@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using Albamon.UIT;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
@@ -18,7 +19,7 @@ namespace Albamon.UIT.Purchases
     {
         IWebDriver _driver;
         string _URI;
-        //The code for your test Methods goes here
+        /*The code for your test Methods goes here
         public UCPurchaseNFTs_UIT(){
             //Opciones para cargar la página y aceptar certificados no seguros
             var optionsc = new ChromeOptions
@@ -35,6 +36,14 @@ namespace Albamon.UIT.Purchases
             //URI de la aplicación, sustitúyelo por el tuyo
             _URI = "https://localhost:44367/";
         }
+        */
+        public UCPurchaseNFTs_UIT()
+        {
+            UtilitiesUIT.SetUp_UIT(out _driver, out _URI);
+            initial_step_opening_the_web_page();
+            //it is needed to run the scripts for udpating the database 
+        }
+
 
         [Fact]
         public void initial_step_opening_the_web_page()
@@ -54,12 +63,11 @@ namespace Albamon.UIT.Purchases
 
 
 
-
-
         void IDisposable.Dispose(){
             //To close and release all the resources allocated by the web driver 
             _driver.Close();
             _driver.Dispose();
+            GC.SuppressFinalize(this);
         }
     }
 }
