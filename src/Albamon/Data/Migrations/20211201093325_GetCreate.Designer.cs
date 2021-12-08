@@ -4,14 +4,16 @@ using Albamon.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Albamon.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211201093325_GetCreate")]
+    partial class GetCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -144,7 +146,6 @@ namespace Albamon.Data.Migrations
                         .HasColumnType("float");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("PurchaseId");
@@ -168,14 +169,11 @@ namespace Albamon.Data.Migrations
                     b.Property<int>("Pid")
                         .HasColumnType("int");
 
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
                     b.HasKey("NftId", "PurchaseId");
 
                     b.HasIndex("PurchaseId");
 
-                    b.ToTable("PurchaseNFT");
+                    b.ToTable("PurchaseNFTS");
                 });
 
             modelBuilder.Entity("Albamon.Models.TypeNFT", b =>
@@ -564,10 +562,8 @@ namespace Albamon.Data.Migrations
             modelBuilder.Entity("Albamon.Models.Purchase", b =>
                 {
                     b.HasOne("Albamon.Models.Usuario", "User")
-                        .WithMany("Purchases")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany()
+                        .HasForeignKey("UserId");
 
                     b.Navigation("User");
                 });
@@ -713,11 +709,6 @@ namespace Albamon.Data.Migrations
             modelBuilder.Entity("Albamon.Models.Cliente", b =>
                 {
                     b.Navigation("Ventas");
-                });
-
-            modelBuilder.Entity("Albamon.Models.Usuario", b =>
-                {
-                    b.Navigation("Purchases");
                 });
 #pragma warning restore 612, 618
         }

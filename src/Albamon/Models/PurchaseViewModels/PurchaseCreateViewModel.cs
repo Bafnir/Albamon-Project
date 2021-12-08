@@ -28,7 +28,7 @@ namespace Albamon.Models.PurchaseViewModels
         }
 
         //It will be necessary whenever we need a relationship with ApplicationUser or any child class
-        public string UserId
+        public string UsuarioId
         {
             get;
             set;
@@ -46,6 +46,10 @@ namespace Albamon.Models.PurchaseViewModels
             set;
         }
 
+        [DataType(DataType.Currency)]
+        [Display(Name = "Gas fee")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Please, set your gas fee")]
+
         public double Fee
         {
             get;
@@ -61,10 +65,6 @@ namespace Albamon.Models.PurchaseViewModels
         [EmailAddress]
         public string Email { get; set; }
 
-        [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MMM/yyyy}")]
-        public virtual DateTime? ExpirationDate { get; set; }
-
         public PurchaseCreateViewModel()
         {
 
@@ -77,11 +77,11 @@ namespace Albamon.Models.PurchaseViewModels
             if (obj is PurchaseCreateViewModel model)
                 result = Nombre == model.Nombre &&
                   Apellidos == model.Apellidos &&
-                  UserId == model.UserId &&
+                  UsuarioId == model.UsuarioId &&
+                  Fee == model.Fee &&
                   TotalPrice == model.TotalPrice &&
                   BuyDate == model.BuyDate &&
-                  Email == model.Email &&
-                  ExpirationDate == model.ExpirationDate;
+                  Email == model.Email;
             else
                 return false;
             for (int i = 0; i < this.PurchaseNFTs.Count; i++)
@@ -94,9 +94,12 @@ namespace Albamon.Models.PurchaseViewModels
                 if (Fee == null)
                     yield return new ValidationResult("Please, always imput a fee, it is required for the blockchain to complete the transaction",
                         new[] { nameof(Fee) });
+                if(Fee < 0)
+                    yield return new ValidationResult("Fee must be a positive number",
+                        new[] { nameof(Fee) });
             //it is checked whether quantity is higher than 0 for at least one movie
             if (PurchaseNFTs.Sum(pi => pi.Quantity) <= 0)
-                yield return new ValidationResult("Please, select Quantity higher than 0 for at least one movie",
+                yield return new ValidationResult("Please, select Quantity higher than 0 for at least one nft",
                      new[] { nameof(PurchaseNFTs) });
         }
     }
@@ -112,6 +115,12 @@ namespace Albamon.Models.PurchaseViewModels
 
         [StringLength(50, ErrorMessage = "First name cannot be longer than 50 characters.")]
         public virtual String Name
+        {
+            get;
+            set;
+        }
+
+        public virtual Double Fee
         {
             get;
             set;
@@ -141,12 +150,12 @@ namespace Albamon.Models.PurchaseViewModels
 
         public override bool Equals(object obj)
         {
-            PurchaseNFTViewModel purchaseNft = obj as PurchaseNFTViewModel;
+            PurchaseNFTViewModel purchaseNFT = obj as PurchaseNFTViewModel;
             bool result = false;
-            if ((NftId == purchaseNft.NftId)
-                && (this.Price == purchaseNft.Price)
-                    && (this.Quantity == purchaseNft.Quantity)
-                    && (this.Name == purchaseNft.Name))
+            if ((NftId == purchaseNFT.NftId)
+                && (this.Price == purchaseNFT.Price)
+                    && (this.Quantity == purchaseNFT.Quantity)
+                    && (this.Name == purchaseNFT.Name))
                 result = true;
             return result;
         }

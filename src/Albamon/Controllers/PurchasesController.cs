@@ -41,6 +41,8 @@ namespace Albamon.Controllers
             }
 
             var purchase = await _context.Purchase
+                .Include(p => p.User)
+                .Include(p => p.PurchaseNFTS).ThenInclude(p => p.NFT)
                 .FirstOrDefaultAsync(m => m.PurchaseId == id);
             if (purchase == null)
             {
@@ -58,7 +60,7 @@ namespace Albamon.Controllers
 
             if (selectedNfts.IdsToAdd == null)
             {
-                ModelState.AddModelError("MovieNoSelected", "You should select at least a NFT to be purchased, please");
+                ModelState.AddModelError("NftNoSelected", "You should select at least a NFT to be purchased, please");
             }
             else
                 purchase.PurchaseNFTs = _context.NFT.Include(NFT => NFT.TypeNFT)
@@ -82,11 +84,11 @@ namespace Albamon.Controllers
         // POST: Purchases/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PurchaseId,TotalPrice,BuyDate")] Purchase purchase)
-        {
-            if (ModelState.IsValid)
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Create([Bind("PurchaseId,TotalPrice,BuyDate")] Purchase purchase)
+        //{
+        /*    if (ModelState.IsValid)
             {
                 _context.Add(purchase);
                 await _context.SaveChangesAsync();
@@ -94,6 +96,61 @@ namespace Albamon.Controllers
             }
             return View(purchase);
         }
+        */
+        //nuevo
+        [HttpPost, ActionName("Create")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreatePost(PurchaseCreateViewModel purchaseViewModel)
+        {
+            NFT nft; PurchaseNFT purchaseNFT;
+            Usuario usuario;
+            Purchase purchase = new();
+            purchase.TotalPrice = 0;
+            purchase.PurchaseNFTS = new List<PurchaseNFT>();
+            usuario = await _context.Users.OfType<Usuario>().FirstOrDefaultAsync<Usuario>(u => u.UserName.Equals(User.Identity.Name));
+
+
+            if (ModelState.IsValid)
+            {
+                foreach (PurchaseNFTViewModel item in purchaseViewModel.PurchaseNFTs)
+                {
+                    nft = await _context.NFT.FirstOrDefaultAsync<NFT>(m => m.NftId == item.NftId);
+                    if (item.Quantity > 0) {
+                        purchaseNFT = new PurchaseNFT
+                        {
+                            NFT = nft,
+                            Purchase = purchase,
+                            Quantity = item.Quantity,
+                            Fee = purchaseViewModel.Fee
+                    };
+
+                        purchase.TotalPrice += item.Quantity * nft.Price;
+                        purchase.PurchaseNFTS.Add(purchaseNFT);
+                    }
+                }
+            }
+            purchase.Fees = purchaseViewModel.Fee;
+            if (purchase.Fees < 2)
+            {
+                ModelState.AddModelError("", $"The amount of fee introduced is not enough, please select more than 2");
+            }
+
+            if (ModelState.ErrorCount > 0)
+            {
+                purchaseViewModel.Nombre = usuario.Nombre;
+                purchaseViewModel.Apellidos = usuario.Apellidos;
+                return View(purchaseViewModel);
+            }
+
+
+            purchase.User = usuario;
+            purchase.BuyDate = DateTime.Now;
+            _context.Add(purchase);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Details", new { id = purchase.PurchaseId });
+        }
+
+        //fin nuevo
 
         // GET: Purchases/Edit/5
         public async Task<IActionResult> Edit(int? id)

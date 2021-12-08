@@ -12,12 +12,15 @@ namespace Albamon.Models
         [Key]
         public virtual int PurchaseId { get; set; }
 
+        [Display(Name = "Total price:")]
         public virtual double TotalPrice { get; set; }
 
         [Required]
+        [Display(Name = "Gas fee:")]
         public virtual double Fees { get; set; }
 
         [Required]
+        [Display(Name = "Purchase date:")]
         public virtual DateTime BuyDate { get; set; }
 
         [Required]
@@ -30,8 +33,9 @@ namespace Albamon.Models
             return obj is Purchase purchase &&
                    PurchaseId == purchase.PurchaseId &&
                    TotalPrice == purchase.TotalPrice &&
-                   BuyDate == purchase.BuyDate &&
-                   EqualityComparer<Usuario>.Default.Equals(User, purchase.User);
+                   (this.BuyDate.Subtract(purchase.BuyDate) < new TimeSpan(0, 1, 0)) &&
+                   Fees == purchase.Fees &&
+                   User.Equals(purchase.User);          
         }
     }
 }

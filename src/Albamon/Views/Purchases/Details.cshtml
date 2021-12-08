@@ -4,26 +4,79 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h2>Details</h2>
 
 <div>
     <h4>Purchase</h4>
     <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TotalPrice)
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.User.Nombre)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TotalPrice)
+        <dd>
+            @Html.DisplayFor(model => model.User.Nombre)
         </dd>
-        <dt class = "col-sm-2">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.Apellidos)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User.Apellidos)
+        </dd>
+        <dt>
             @Html.DisplayNameFor(model => model.BuyDate)
         </dt>
-        <dd class = "col-sm-10">
+        <dd>
             @Html.DisplayFor(model => model.BuyDate)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Fees)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Fees)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalPrice)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TotalPrice)
+        </dd>
+
     </dl>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Title
+                </th>
+                <th>
+                    Price
+                </th>
+                <th>
+                    Quantity
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.PurchaseNFTS.Count; i++)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.PurchaseNFTS.ElementAt<PurchaseNFT>(i).NFT.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.PurchaseNFTS.ElementAt<PurchaseNFT>(i).NFT.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.PurchaseNFTS.ElementAt<PurchaseNFT>(i).Quantity)
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
 </div>
+
 <div>
     <a asp-action="Edit" asp-route-id="@Model.PurchaseId">Edit</a> |
     <a asp-action="Index">Back to List</a>

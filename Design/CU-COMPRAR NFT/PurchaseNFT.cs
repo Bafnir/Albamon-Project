@@ -13,6 +13,10 @@ namespace Design
     public virtual int Pid { get; set; }
     [Required]    
     public virtual double Fee { get; set; }
+
+    [Range(1, Double.MaxValue, ErrorMessage = "You must provide a valid quantity")]
+    public virtual int Quantity{ get; set; }
+
     [ForeignKey("NftId")]
     public virtual NFT NFT { get; set; }
     public virtual int NftId { get; set; }
