@@ -69,14 +69,14 @@ namespace Albamon.UIT.Purchases
 
         }
 
-        private void Third_filter_movies_byPrice(string PriceFilter)
+        private void Third_filter_nfts_byPrice(string PriceFilter)
         {
             _driver.FindElement(By.Id("Price")).SendKeys(PriceFilter);
 
             _driver.FindElement(By.Id("filterbyPriceType")).Click();
         }
 
-        private void Third_filter_movies_byTypeNFT(string TypeNFTSelected)
+        private void Third_filter_nfts_byTypeNFT(string TypeNFTSelected)
         {
 
             var TypeNFT = _driver.FindElement(By.Id("TypeNFTSelected"));
@@ -86,11 +86,11 @@ namespace Albamon.UIT.Purchases
             //select Action from the dropdown menu
             selectElement.SelectByText(TypeNFTSelected);
 
-            _driver.FindElement(By.Id("filterbyTitleGenre")).Click();
+            _driver.FindElement(By.Id("filterbyPriceType")).Click();
 
         }
 
-        private void Third_select_movies_and_submit()
+        private void Third_select_nfts_and_submit()
         {
 
             _driver.FindElement(By.Id("Nft_2")).Click();
@@ -138,7 +138,7 @@ namespace Albamon.UIT.Purchases
             //Act
             Precondition_perform_login();
             First_step_accessing_purchases();
-            Third_select_movies_and_submit();
+            Third_select_nfts_and_submit();
             Fourth_fill_in_information_and_press_create(Fee, quantityNft1,
             quantityNft2);
 
@@ -148,6 +148,8 @@ namespace Albamon.UIT.Purchases
 
         }
 
+
+        //(Skip = "As precondition, first execute script dbo.nft.NoNfts to remove nfts")
         [Fact(Skip = "As precondition, first execute script dbo.nft.NoNfts to remove nfts")]
         [Trait("LevelTesting", "Funcional Testing")]
         public void UC1_2_alternate_flow_1_NoNftsAvailable()
@@ -164,6 +166,97 @@ namespace Albamon.UIT.Purchases
             //checks the expected row exists
             Assert.NotNull(movieRow);
             Assert.Equal(expectedText, movieRow.Text);
+        }
+
+
+        [Theory]
+        [InlineData("CHIK", "9", "FIRE", "Price")]
+        [InlineData("CHOK", "0", "WATER", "TypeNFT")]
+        [Trait("LevelTesting", "Funcional Testing")]
+        public void UC1_3_UC1_4_alternate_flow_2_filteringbyPrice(string Nombre, string price,
+            string TypeNFT, string filter)
+        {
+
+            //Arrange
+            string[] expectedText = { Nombre, TypeNFT };
+            //Act
+            Precondition_perform_login();
+            First_step_accessing_purchases();
+            if (filter.Equals("Price")) {
+                Third_filter_nfts_byPrice(price);
+            }
+            else {
+                Third_filter_nfts_byTypeNFT(TypeNFT);
+            }
+            
+            var movieRow = _driver.FindElements(By.Id("NFT_Name_" + Nombre));
+
+            //checks the expected row exists
+            Assert.NotNull(movieRow);
+
+            //checks every column has the data as expected
+            foreach (string expected in expectedText)
+                Assert.NotNull(movieRow.First(l => l.Text.Contains(expected)));
+        }
+
+
+        [Fact]
+        [Trait("LevelTesting", "Funcional Testing")]
+        public void UC1_5_alternate_flow_3_moviesNotSelected()
+        {
+            //Arrange
+            string expectedText = "You must select at least one nft";
+
+            //Act
+            Precondition_perform_login();
+            First_step_accessing_purchases();
+            Third_alternate_not_selecting_movies();
+            //Assert
+            var errorMessage = _driver.FindElement(By.Id("ModelErrors")).Text;
+
+            Assert.Equal(expectedText, errorMessage);
+
+            Assert.Contains(expectedText, _driver.PageSource);
+
+        }
+
+        [Theory]
+        [InlineData("", "1", "1", "Please, set your gas fee")]
+        [Trait("LevelTesting", "Funcional Testing")]
+        public void UC1_6_UC1_6_15_alternate_flow_4_testingErrorsMandatorydata(string Fee, string quantityNft1,
+            string quantityNft2, string expectedText)
+        {
+
+            //Act
+            Precondition_perform_login();
+            First_step_accessing_purchases();
+            Third_select_nfts_and_submit();
+            Fourth_fill_in_information_and_press_create(Fee, quantityNft1,
+            quantityNft2);
+
+
+            //Assert
+            //the expected error is shown in the view
+            Assert.Contains(expectedText, _driver.PageSource);
+
+
+        }
+
+
+
+
+        [Fact]
+        [Trait("LevelTesting", "Funcional Testing")]
+        public void UC1_7_not_logged_in()
+        {
+            //Arrange
+            string expectedText = "Use a local account to log in.";
+
+            //Act
+            First_step_accessing_purchases();
+            //Assert
+            Assert.Contains(expectedText, _driver.PageSource);
+
         }
 
 
