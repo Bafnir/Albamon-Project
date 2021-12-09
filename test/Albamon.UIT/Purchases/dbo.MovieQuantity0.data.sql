@@ -1,0 +1,3 @@
+﻿SET IDENTITY_INSERT [dbo].[Movie] ON
+DELETE [dbo].[NFT]
+SET IDENTITY_INSERT [dbo].[Movie] OFF

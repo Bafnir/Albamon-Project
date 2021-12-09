@@ -1,4 +1,3 @@
-
 SET IDENTITY_INSERT [dbo].[NFT] ON
 INSERT INTO [dbo].[NFT] ([NftId], [Name], [Price], [Health], [Attack], [Rarity], [TypeNFTId]) VALUES (12, N'KOFFINGOMON', 10, 10, 2, N'RARE', 3)
 INSERT INTO [dbo].[NFT] ([NftId], [Name], [Price], [Health], [Attack], [Rarity], [TypeNFTId]) VALUES (13, N'PIDGEOTOMON', 14, 10, 2, N'NORMAL', 4)

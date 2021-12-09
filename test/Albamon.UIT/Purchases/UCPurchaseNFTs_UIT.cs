@@ -19,24 +19,15 @@ namespace Albamon.UIT.Purchases
     {
         IWebDriver _driver;
         string _URI;
-        /*The code for your test Methods goes here
-        public UCPurchaseNFTs_UIT(){
-            //Opciones para cargar la página y aceptar certificados no seguros
-            var optionsc = new ChromeOptions
-            {
-                PageLoadStrategy = PageLoadStrategy.Normal,
-                AcceptInsecureCertificates = true
-            };
-            //Instancia el controlador de Chrome
-            // Nota: para usar otros navegadores consulta el proyecto de ejemplo
-            _driver = new ChromeDriver(optionsc);
-            //Tiempo máximo del controlador para cargar el servicio //Ver el ejemplo de tarjeta de crédito
-            _driver.Manage().Timeouts().ImplicitWait =
-            TimeSpan.FromSeconds(50);
-            //URI de la aplicación, sustitúyelo por el tuyo
-            _URI = "https://localhost:44367/";
+
+        void IDisposable.Dispose()
+        {
+            //To close and release all the resources allocated by the web driver 
+            _driver.Close();
+            _driver.Dispose();
+            GC.SuppressFinalize(this);
         }
-        */
+
         public UCPurchaseNFTs_UIT()
         {
             UtilitiesUIT.SetUp_UIT(out _driver, out _URI);
@@ -45,29 +36,137 @@ namespace Albamon.UIT.Purchases
         }
 
 
-        [Fact]
         public void initial_step_opening_the_web_page()
         {
             //Arrange
-            string expectedTitle = "Albamon Home Page - Albamon";
-            string expectedText = "marketplace";
+            //string expectedTitle = "Albamon Home Page - Albamon";
+            //string expectedText = "marketplace";
             //Act
             //El navegador cargará la URI indicada
             _driver.Navigate().GoToUrl(_URI);
             //Assert
             //Comprueba que el título coincide con el esperado
-            Assert.Equal(expectedTitle, _driver.Title);
+            //Assert.Equal(expectedTitle, _driver.Title);
             //Comprueba si la página contiene el string indicado
-            Assert.Contains(expectedText, _driver.PageSource);
+            //Assert.Contains(expectedText, _driver.PageSource);
+        }
+
+        public void Precondition_perform_login()
+        {
+            _driver.Navigate().GoToUrl(_URI +
+            "Identity/Account/Login");
+            _driver.FindElement(By.Id("Input_Email"))
+            .SendKeys("peter@uclm.com");
+            _driver.FindElement(By.Id("Input_Password"))
+            .SendKeys("OtherPass12$");
+            _driver.FindElement(By.Id("login-submit"))
+            .Click();
+        }
+
+        private void First_step_accessing_purchases()
+        {
+            _driver.FindElement(By.Id("PurchaseController")).Click();
+
+        }
+
+        private void Third_filter_movies_byPrice(string PriceFilter)
+        {
+            _driver.FindElement(By.Id("Price")).SendKeys(PriceFilter);
+
+            _driver.FindElement(By.Id("filterbyPriceType")).Click();
+        }
+
+        private void Third_filter_movies_byTypeNFT(string TypeNFTSelected)
+        {
+
+            var TypeNFT = _driver.FindElement(By.Id("TypeNFTSelected"));
+
+            //create select element object 
+            SelectElement selectElement = new SelectElement(TypeNFT);
+            //select Action from the dropdown menu
+            selectElement.SelectByText(TypeNFTSelected);
+
+            _driver.FindElement(By.Id("filterbyTitleGenre")).Click();
+
+        }
+
+        private void Third_select_movies_and_submit()
+        {
+
+            _driver.FindElement(By.Id("Nft_2")).Click();
+            _driver.FindElement(By.Id("Nft_4")).Click();
+            _driver.FindElement(By.Id("nextButton")).Click();
+
+        }
+
+        private void Third_alternate_not_selecting_movies()
+        {
+
+            _driver.FindElement(By.Id("nextButton")).Click();
+
+        }
+
+        private void Fourth_fill_in_information_and_press_create(string Fee, string quantityNft1,
+            string quantityNft2)
+        {
+            _driver.FindElement(By.Id("Fee")).Clear();
+            _driver.FindElement(By.Id("Fee")).SendKeys(Fee);
+
+            _driver.FindElement(By.Id("Nft_Quantity_2")).Clear();
+            _driver.FindElement(By.Id("Nft_Quantity_2")).SendKeys(quantityNft1);
+
+            _driver.FindElement(By.Id("Nft_Quantity_4")).Clear();
+            _driver.FindElement(By.Id("Nft_Quantity_4")).SendKeys(quantityNft2);
+
+            _driver.FindElement(By.Id("CreateButton")).Click();
+        }
+
+
+        [Theory]
+        [ClassData(typeof(PurchaseNftsTestDataGeneratorBasicFlow))]
+        [Trait("LevelTesting", "Funcional Testing")]
+        public void UC1_1_1_basic_flow(string Fee, string quantityNft1,
+            string quantityNft2)
+        {
+            //Arrange
+        
+            string[] expectedText = { "Details - Albamon","Details",
+                "Purchase","Peter","Jackson","Purchase date:","Gas fee:","5",
+                "Total price:","15","CHIK","5",
+                "CHOK","10"};
+
+            //Act
+            Precondition_perform_login();
+            First_step_accessing_purchases();
+            Third_select_movies_and_submit();
+            Fourth_fill_in_information_and_press_create(Fee, quantityNft1,
+            quantityNft2);
+
+            //Assert
+            foreach (string expected in expectedText)
+                Assert.Contains(expected, _driver.PageSource);
+
+        }
+
+        [Fact(Skip = "As precondition, first execute script dbo.nft.NoNfts to remove nfts")]
+        [Trait("LevelTesting", "Funcional Testing")]
+        public void UC1_2_alternate_flow_1_NoNftsAvailable()
+        {
+            //Arrange
+            string expectedText = "There are no NFTS available";
+
+            //Act
+            Precondition_perform_login();
+            First_step_accessing_purchases();
+
+            var movieRow = _driver.FindElement(By.Id("NoNFTS"));
+
+            //checks the expected row exists
+            Assert.NotNull(movieRow);
+            Assert.Equal(expectedText, movieRow.Text);
         }
 
 
 
-        void IDisposable.Dispose(){
-            //To close and release all the resources allocated by the web driver 
-            _driver.Close();
-            _driver.Dispose();
-            GC.SuppressFinalize(this);
-        }
     }
 }
