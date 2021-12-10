@@ -222,6 +222,8 @@ namespace Albamon.UIT.Purchases
 
         [Theory]
         [InlineData("", "1", "1", "Please, set your gas fee")]
+        [InlineData("4", "", "1", "The Quantity field is required.")]
+        [InlineData("4", "1", "", "The Quantity field is required.")]
         [Trait("LevelTesting", "Funcional Testing")]
         public void UC1_6_UC1_6_15_alternate_flow_4_testingErrorsMandatorydata(string Fee, string quantityNft1,
             string quantityNft2, string expectedText)
