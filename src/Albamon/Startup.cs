@@ -27,15 +27,28 @@ namespace Albamon
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
+            string conexionURI = "ASPNETCORE_ENVIRONMENT";
+            string conexion = Environment.GetEnvironmentVariable(conexionURI);
+            // En caso de que el entorno de despliegue sea el de desarrollo todo funcionara como al comienzo 
+            if (conexion != "Development")
+            {
+                services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDatabaseDeveloperPageExceptionFilter();
-
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddRoles<IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                Configuration.GetConnectionString("dbalbamonconnection")));
+                // Esto sirve para aplicar las migraciones a la base de datos que tengamos en marcha
+                // Solo lo haremos cuando esté en producción la aplicación ya que nuestro modelo puede cambiar
+                services.BuildServiceProvider().GetService<ApplicationDbContext>().Database.Migrate();
+            }
+            else
+            {
+                services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            }
+            services.AddDefaultIdentity<IdentityUser>(options => options
+            .SignIn.RequireConfirmedAccount = true).AddRoles<IdentityRole>()
+            .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
+            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
