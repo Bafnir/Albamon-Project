@@ -19,7 +19,7 @@ namespace Albamon.UIT
         {
             get
             {
-                return "https://localhost:44367/";
+                return "https://localhost:5001/";
 
             }
         }
